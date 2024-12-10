@@ -60,6 +60,20 @@ Finally, use `git push` to push all modification to the repo.
 git push
 ```
 
+## Project Architecture
+
+```
+├──src/
+├──utility/
+├──makefile
+├──.gitignore
+└──README.md
+```
+
+- `src/`: All `.jack` files are in this directory. After compling, there will be `.vm` files, please remove them before `git push`. 
+- `utility/`: Complier, Virtual machine...
+- `makefile`: You can use `make` command to complie the project and open the VMEmulator, use `make clean` to remove all `.vm` files after you finish your testing.
+
 ## Good Practices
 
 - Always test your code before pushing it!
