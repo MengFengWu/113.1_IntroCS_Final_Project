@@ -55,8 +55,8 @@ class Hitbox {
     }
     
     method void detectLevel1(int x, int y, int vy, bool s, int size) {
-        do detectSquare(300-buffer, 510+buffer, 184-buffer, 254+buffer, x, y, size);
-        do detectSquare(200-buffer, 300+buffer, 124-buffer, 160+buffer, x, y, size);
+        do detectSquare(300, 510, 184, 254, x, y, size);
+        do detectSquare(200, 300, 124, 160, x, y, size);
 
         if(x < 1) {
             let xStat = 1;
@@ -77,7 +77,12 @@ class Hitbox {
         return;
     }
 
-    method void detectSquare(int xL, int xR, int yU, int yD, int x, int y, int size) {
+    method void detectSquare(int rxL, int rxR, int ryU, int ryD, int x, int y, int size) {
+        var int xL, xR, yU, yD;
+        let xL = rxL - buffer;
+        let xR = rxR + buffer;
+        let yU = ryU - buffer;
+        let yD = ryD + buffer;
         if(((x + size) > xL) & (x < xR)) {
             if((y < yD) & ((y + size) > yD)) {
                 // do Output.printString("YD EDGE!");
