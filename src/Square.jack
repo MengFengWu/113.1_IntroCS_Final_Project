@@ -4,13 +4,25 @@ class Square {
 
    field int x, y; // screen location of the top-left corner of this square
    field int size; // length of this square, in pixels
+   field int g; // gravity
+   field int vy, vyLimit; // velocity of y direction & its limit;
+   field int velMul;
+   field int direction; // 1: right, -1: left, 0: none;
+   field bool isStable; // true: stable, can Jump;
+   field Hitbox hitbox;
 
    /** Constructs and draws a new square with a given location and size. */
    constructor Square new(int ax, int ay, int asize) {
       let x = ax;
       let y = ay;
       let size = asize;
+      let g = 3;
+      let vy = 0;
+      let vyLimit = 100;
+      let velMul = 10;
+      let isStable = false;
       do draw();
+      let hitbox = Hitbox.new();
       return this;
    }
 
@@ -82,27 +94,99 @@ class Square {
       return;
    }
 
-   /** Moves the square left by 2 pixels (if possible). */
-   method void moveLeft() {
-      if (x > 1) {
-         do Screen.setColor(false);
-         do Screen.drawRectangle((x + size) - 1, y, x + size, y + size);
-         let x = x - 2;
-         do Screen.setColor(true);
-         do Screen.drawRectangle(x, y, x + 1, y + size);
+   method void setDirection(int dir) {
+      let direction = dir;
+      return;
+   }
+
+   method void jump() {
+      if(isStable = true) {
+         // do Output.printString("JUMP!");
+         // do Output.println();
+         let vy = -70;
+         let isStable = false;
       }
+      return;
+   }
+   
+   method void changeVelY() {
+      let vy = vy + g;
+      if (vy < (-1 * vyLimit)) {
+         let vy = -1 * vyLimit;
+      }
+      if (vy > vyLimit) {
+         let vy = vyLimit;
+      }
+      if (((vy / velMul) > 0) & ((vy / velMul) < 0)) {
+         let isStable = false;
+      }
+      // do Output.printString("velocity y: ");
+      // do Output.printInt(vy);
+      // do Output.println();
+      return;
+   }
+
+   method void changePosition(int level) {
+      if (direction = -1) {
+         let x = x - 2;
+      }
+      if (direction = 1) {
+         let x = x + 2;
+      }
+      let y = y + (vy / velMul);
+
+      do hitbox.detectMain(level, x, y, vy, isStable, size);
+      let x = hitbox.getX();
+      let y = hitbox.getY();
+      let vy = hitbox.getVY();
+      let isStable = hitbox.getStable();
+
+      return;
+   }
+
+   /** Moves the square left by 2 pixels (if possible). */
+   method void move(int level) {
+      // do Screen.setColor(false);
+      // do Screen.drawRectangle((x + size) - 1, y, x + size, y + size);
+      do erase();
+      // let x = x - 2;
+      do changeVelY();
+      do changePosition(level);
+      // let y = y + (vy / velMul);
+      // do Screen.setColor(true);
+      // do Screen.drawRectangle(x, y, x + 1, y + size);
+      do draw();
       return;
    }
 
    /** Moves the square right by 2 pixels (if possible). */
-   method void moveRight() {
-      if ((x + size) < 510) {
-         do Screen.setColor(false);
-         do Screen.drawRectangle(x, y, x + 1, y + size);
-         let x = x + 2;
-         do Screen.setColor(true);
-         do Screen.drawRectangle((x + size) - 1, y, x + size, y + size);
-      }
+   // method void moveRight() {
+   //    if ((x + size) < 510) {
+   //       // do Screen.setColor(false);
+   //       // do Screen.drawRectangle(x, y, x + 1, y + size);
+   //       do erase();
+   //       let x = x + 2;
+   //       do changeVelY();
+   //       let y = y + (vy / velMul);
+   //       // do Output.printString("axis y: ");
+   //       // do Output.printInt(y);
+   //       // do Output.println();
+   //       // do Screen.setColor(true);
+   //       // do Screen.drawRectangle((x + size) - 1, y, x + size, y + size);
+   //       do draw();
+   //    }
+   //    return;
+   // }
+
+   method void printInfo() {
+      do Output.printString("SQUARE INFO:");
+      do Output.println();
+      do Output.printString("vy: ");
+      do Output.printInt(vy);
+      do Output.println();
+      do Output.printString("y: ");
+      do Output.printInt(y);
+      do Output.println();
       return;
    }
 }

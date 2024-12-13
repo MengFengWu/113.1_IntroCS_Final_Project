@@ -1,8 +1,8 @@
 /** Initializes a new Square game and starts running it. */
 class Main {
     function void main() {
-        var SquareGame game;
-        let game = SquareGame.new();
+        var MainGame game;
+        let game = MainGame.new();
         do game.run();
         do game.dispose();
         return;

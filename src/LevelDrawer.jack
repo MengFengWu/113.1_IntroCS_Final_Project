@@ -1,0 +1,35 @@
+class LevelDrawer {
+
+    constructor LevelDrawer new() {
+        return this;
+    }
+
+    method void drawLevelMain(int level) {
+        if(level = 1) {
+            do drawLevel1();
+        }
+        return;
+    }
+
+    method void eraseLevelMain(int level) {
+        if(level = 1) {
+            do eraseLevel1();
+        }
+        return;
+    }
+
+    method void drawLevel1() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(300, 184, 510, 254);
+        do Screen.drawRectangle(200, 124, 300, 160);
+        return;
+    }
+
+    method void eraseLevel1() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(300, 184, 510, 254);
+        do Screen.drawRectangle(200, 124, 300, 160);
+        return;
+    }
+
+}
