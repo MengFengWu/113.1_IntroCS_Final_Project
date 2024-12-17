@@ -58,15 +58,22 @@ class LevelDrawer {
 
     method void drawLevel1() {
         do Screen.setColor(true);
-        do Screen.drawRectangle(300, 184, 510, 254);
-        do Screen.drawRectangle(200, 124, 300, 160);
+        do drawRectangle(0, 450, 122, 132); // mid floor
+        do drawRectangle(0, 25, 122, 152); // AmongUs
+        do drawRectangle(470, 510, 184, 254); // right step up
+        do drawRectangle(50, 90, 214, 254); // first step
+        do drawRectangle(50, 90, 158, 182); // AmongUsEye
+        do drawRectangle(125, 145, 164, 254); // second step
+        do drawRectangle(110, 145, 122, 139); // second step head
+        do drawRectangle(200, 280, 234, 254); // third step
+        do drawRectangle(300, 330, 170, 230); // fourth step
+        do drawRectangle(380, 420, 170, 254); // fifth step
         return;
     }
 
     method void eraseLevel1() {
         do Screen.setColor(false);
-        do Screen.drawRectangle(300, 184, 510, 254);
-        do Screen.drawRectangle(200, 124, 300, 160);
+        /** Remember to erase at last*/
         return;
     }
 
@@ -102,6 +109,11 @@ class LevelDrawer {
     }
 
     // API for moving tiles
+
+    method void drawRectangle(int rxL, int rxR, int ryU, int ryD) {
+        do Screen.drawRectangle(rxL, ryU, rxR, ryD);
+        return;
+    }
 
     method void updateMovingSquare(int rxLi, int rxRi, int ryUi, int ryDi, 
                                     int rxLf, int rxRf, int ryUf, int ryDf,

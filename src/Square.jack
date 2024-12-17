@@ -6,6 +6,8 @@ class Square {
    field int size; // length of this square, in pixels
    field int g; // gravity
    field int vy, vyLimit; // velocity of y direction & its limit;
+   field int vx;
+   field int jumpVel;
    field int velMul;
    field int direction; // 1: right, -1: left, 0: none;
    field bool isStable; // true: stable, can Jump;
@@ -18,8 +20,10 @@ class Square {
       let size = asize;
       let g = 3;
       let vy = 0;
+      let vx = 3;
       let vyLimit = 100;
       let velMul = 10;
+      let jumpVel = 70;
       let isStable = false;
       do draw();
       let hitbox = Hitbox.new();
@@ -103,7 +107,7 @@ class Square {
       if(isStable = true) {
          // do Output.printString("JUMP!");
          // do Output.println();
-         let vy = -70;
+         let vy = -jumpVel;
          let isStable = false;
       }
       return;
@@ -117,7 +121,7 @@ class Square {
       if (vy > vyLimit) {
          let vy = vyLimit;
       }
-      if (((vy / velMul) > 0) & ((vy / velMul) < 0)) {
+      if (((vy / velMul) > 0) | ((vy / velMul) < 0)) {
          let isStable = false;
       }
       // do Output.printString("velocity y: ");
@@ -128,10 +132,10 @@ class Square {
 
    method void changePosition(int level) {
       if (direction = -1) {
-         let x = x - 2;
+         let x = x - vx;
       }
       if (direction = 1) {
-         let x = x + 2;
+         let x = x + vx;
       }
       let y = y + (vy / velMul);
 

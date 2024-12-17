@@ -76,8 +76,16 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         
-        do detectSquare(300, 510, 184, 254, xStat, yStat, size);
-        do detectSquare(200, 300, 124, 160, xStat, yStat, size);
+        do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
+        do detectSquare(0, 25, 122, 152, xStat, yStat, size); // AmongUs1
+        do detectSquare(470, 510, 184, 254, xStat, yStat, size); // right step up
+        do detectSquare(50, 90, 214, 254, xStat, yStat, size); // first step
+        do detectSquare(50, 90, 158, 182, xStat, yStat, size); // AmongUsEye
+        do detectSquare(125, 145, 164, 254, xStat, yStat, size); // second step
+        do detectSquare(110, 145, 122, 139, xStat, yStat, size); // second step head
+        do detectSquare(200, 280, 234, 254, xStat, yStat, size); // third step
+        do detectSquare(300, 330, 170, 230, xStat, yStat, size); // fourth step
+        do detectSquare(380, 420, 170, 254, xStat, yStat, size); // fifth step
 
         if(xStat < 1) {
             let xStat = 1;
