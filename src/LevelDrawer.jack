@@ -98,13 +98,17 @@ class LevelDrawer {
 
     method void drawLevel3() {
         do Screen.setColor(true);
-        do drawTriangle(200, 250, 300, 200, true);
+        do drawRectangle(0, 100, 100, 250);
+        do drawTriangle(100, 100, 400, 250, true);
+        do drawTriangle(450, 250, 500, 200, true);
         return;
     }
 
     method void eraseLevel3() {
         do Screen.setColor(false);
-        do drawTriangle(200, 250, 300, 200, true);
+        do drawRectangle(0, 100, 100, 250);
+        do drawTriangle(100, 100, 400, 250, true);
+        do drawTriangle(450, 250, 500, 200, true);
         return;
     }
 
@@ -153,10 +157,32 @@ class LevelDrawer {
     }
 
     method void drawTriangle(int x1, int y1, int x2, int y2, bool fill) {
-        var int start, end;
-        do Screen.drawLine(x1, y1, x2, y2);
+        var int start, end, step;
+        if(fill = false) {
+            do Screen.drawLine(x1, y1, x2, y2);
+        }
         if(fill = true) {
-            // TODO
+            if(y1 < y2) {
+                do drawTriangleAux(x1, y1, x2, y2, y2);
+            }
+            else {
+                do drawTriangleAux(x1, y1, x2, y2, y1);
+            }
+        }
+        return;
+    }
+
+    method void drawTriangleAux(int x1, int y1, int x2, int y2, int bottom) {
+        var int midx, midy;
+        let midx = (x1 + x2) / 2;
+        let midy = (y1 + y2) / 2;
+        if(x1 > x2) {
+            return;
+        }
+        else {
+            do Screen.drawLine(midx, bottom, midx, midy);
+            do drawTriangleAux(x1, y1, midx - 1, midy, bottom);
+            do drawTriangleAux(midx + 1, midy, x2, y2, bottom);
         }
         return;
     }

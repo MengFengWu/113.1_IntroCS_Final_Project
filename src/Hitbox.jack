@@ -139,7 +139,9 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectTriangle(200, 250, 300, 200, xStat, yStat, size);
+        do detectSquare(0, 100, 100, 250, xStat, yStat, size);
+        do detectTriangle(100, 100, 400, 250, xStat, yStat, size);
+        do detectTriangle(450, 250, 500, 200, xStat, yStat, size);
 
         if(xStat < 1) {
             let xStat = 1;
@@ -235,10 +237,55 @@ class Hitbox {
     }
 
     method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
-        var int xLoc, yLoc;
-        let xLoc = x + (size / 2);
-        let yLoc = y + (size / 2);
-        // TODO
+        var int xLoc, yLoc, top;
+        if(~((x1 < x) & (x < x2))) {
+            return;
+        }
+        if(y1 > y2) { // if y1 > y2 (/), check x + size, y + size
+            let xLoc = x + size;
+            let yLoc = y + size;
+            let top = detectTriangleAux(x1, y1, x2, y2, xLoc);
+            if(yLoc > top) {
+                let yStat = top - size;
+                let stableStat = false;
+                let xStat = xStat - ((((y1 - y2)/(x2 - x1)) + 1) * vyStat / 10);
+            }
+        }
+        else { // if y1 < y2 (\), check x, y + size
+            let xLoc = x;
+            let yLoc = y + size;
+            let top = detectTriangleAux(x1, y1, x2, y2, xLoc);
+            if(yLoc > top) {
+                let yStat = top - size;
+                let stableStat = false;
+                let xStat = xStat + ((((y2 - y1)/(x2 - x1)) + 1) * vyStat / 10);
+            }
+        }
         return;
+    }
+
+    method int detectTriangleAux(int x1, int y1, int x2, int y2, int goal) {
+        var int midx, midy, result;
+        let midx = (x1 + x2) / 2;
+        let midy = (y1 + y2) / 2;
+        if(x1 > x2) {
+            return -1;
+        }
+        else {
+            if(midx = goal) {
+                return midy;
+            }
+            else {
+                let result = detectTriangleAux(x1, y1, midx - 1, midy, goal);
+                if(result > 0) {
+                    return result;
+                }
+                let result = detectTriangleAux(midx + 1, midy, x2, y2, goal);
+                if(result > 0) {
+                    return result;
+                }
+            }
+        }
+        return -1;
     }
 }
