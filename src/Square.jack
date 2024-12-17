@@ -144,6 +144,11 @@ class Square {
       return;
    }
 
+   method void syncHitbox(int time) {
+      do hitbox.setTime(time);
+      return;
+   }
+
    /** Moves the square left by 2 pixels (if possible). */
    method void move(int level) {
       // do Screen.setColor(false);

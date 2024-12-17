@@ -3,6 +3,7 @@ class Hitbox {
     field int xStat, yStat, vyStat;
     field bool stableStat;
     field int buffer;
+    field int time;
 
     constructor Hitbox new() {
         let xStat = 0;
@@ -10,6 +11,7 @@ class Hitbox {
         let vyStat = 0;
         let stableStat = false;
         let buffer = 1;
+        let time = 0;
         return this;
     }
 
@@ -17,6 +19,10 @@ class Hitbox {
     method int getY() { return yStat; }
     method int getVY() { return vyStat; }
     method bool getStable() { return stableStat; }
+    method void setTime(int t) { 
+        let time = t;
+        return;
+    }
 
     // hitbox.detectMain(level, x, y, vy, isStable, size);
     method void detectMain(int level, int x, int y, int vy, bool s, int size) {
@@ -26,27 +32,37 @@ class Hitbox {
         let stableStat = s;
         
         if(level = 0) {
-            do Output.println();
             do detectLevel0(x, y, vy, s, size);
         }
         if(level = 1) {
             do detectLevel1(x, y, vy, s, size);
         }
+        if(level = 2) {
+            do detectLevel2(x, y, vy, s, size);
+        }
+        if(level = 3) {
+            do detectLevel3(x, y, vy, s, size);
+        }
         return;
     }
 
     method void detectLevel0(int x, int y, int vy, bool s, int size) {
-        if(x < 1) {
+        let xStat = x;
+        let yStat = y;
+        let vyStat = vy;
+        let stableStat = s;
+        
+        if(xStat < 1) {
             let xStat = 1;
         }
-        if((x + size) > 510) {
+        if((xStat + size) > 510) {
             let xStat = 510 - size;
         }
-        if(y < 1) {
+        if(yStat < 1) {
             let yStat = 1;
             let vyStat = 0;
         }
-        if((y + size) > 254) {
+        if((yStat + size) > 254) {
             let yStat = 254 - size;
             let vyStat = 0;
             let stableStat = true;
@@ -55,20 +71,25 @@ class Hitbox {
     }
     
     method void detectLevel1(int x, int y, int vy, bool s, int size) {
-        do detectSquare(300, 510, 184, 254, x, y, size);
-        do detectSquare(200, 300, 124, 160, x, y, size);
+        let xStat = x;
+        let yStat = y;
+        let vyStat = vy;
+        let stableStat = s;
+        
+        do detectSquare(300, 510, 184, 254, xStat, yStat, size);
+        do detectSquare(200, 300, 124, 160, xStat, yStat, size);
 
-        if(x < 1) {
+        if(xStat < 1) {
             let xStat = 1;
         }
-        if((x + size) > 510) {
+        if((xStat + size) > 510) {
             let xStat = 510 - size;
         }
-        if(y < 1) {
+        if(yStat < 1) {
             let yStat = 1;
             let vyStat = 0;
         }
-        if((y + size) > 254) {
+        if((yStat + size) > 254) {
             let yStat = 254 - size;
             let vyStat = 0;
             let stableStat = true;
@@ -77,12 +98,80 @@ class Hitbox {
         return;
     }
 
+    method void detectLevel2(int x, int y, int vy, bool s, int size) {
+        let xStat = x;
+        let yStat = y;
+        let vyStat = vy;
+        let stableStat = s;
+
+        do detectMovingSquare(50, 100, 200, 250, 200, 250, 200, 250, xStat, yStat, size, 300, true);
+
+        if(xStat < 1) {
+            let xStat = 1;
+        }
+        if((xStat + size) > 510) {
+            let xStat = 510 - size;
+        }
+        if(yStat < 1) {
+            let yStat = 1;
+            let vyStat = 0;
+        }
+        if((yStat + size) > 254) {
+            let yStat = 254 - size;
+            let vyStat = 0;
+            let stableStat = true;
+        }
+
+        return;
+    }
+
+    method void detectLevel3(int x, int y, int vy, bool s, int size) {
+        let xStat = x;
+        let yStat = y;
+        let vyStat = vy;
+        let stableStat = s;
+
+        do detectTriangle(200, 250, 300, 200, xStat, yStat, size);
+
+        if(xStat < 1) {
+            let xStat = 1;
+        }
+        if((xStat + size) > 510) {
+            let xStat = 510 - size;
+        }
+        if(yStat < 1) {
+            let yStat = 1;
+            let vyStat = 0;
+        }
+        if((yStat + size) > 254) {
+            let yStat = 254 - size;
+            let vyStat = 0;
+            let stableStat = true;
+        }
+
+        return;
+    }
+
+    // API for detectings
+
     method void detectSquare(int rxL, int rxR, int ryU, int ryD, int x, int y, int size) {
         var int xL, xR, yU, yD;
         let xL = rxL - buffer;
         let xR = rxR + buffer;
         let yU = ryU - buffer;
         let yD = ryD + buffer;
+        if(((y + size) > yU) & (y < yD)) {
+            if((x < xR) & ((x + size) > xR)) {
+                // do Output.printString("XR EDGE!");
+                // do Output.println();
+                let xStat = xR;
+            }
+            if(((x + size) > xL) & (x < xL)) {
+                // do Output.printString("XL EDGE!");
+                // do Output.println();
+                let xStat = xL - size;
+            }
+        }
         if(((x + size) > xL) & (x < xR)) {
             if((y < yD) & ((y + size) > yD)) {
                 // do Output.printString("YD EDGE!");
@@ -98,18 +187,50 @@ class Hitbox {
                 let stableStat = true;
             }
         }
-        if(((y + size) > yU) & (y < yD)) {
-            if((x < xR) & ((x + size) > xR)) {
-                // do Output.printString("XR EDGE!");
-                // do Output.println();
-                let xStat = xR;
+        return;
+    }
+
+    method void detectMovingSquare(int rxLi, int rxRi, int ryUi, int ryDi, 
+                                    int rxLf, int rxRf, int ryUf, int ryDf,
+                                    int x, int y, int size, int duration, bool back) {
+        var int xL, xR, yU, yD;
+        var int progress;
+        if(back = false) {
+            let progress = time / duration;
+            let progress = (time - (progress * duration));
+            let progress = (progress * 50) / duration;
+            let xL = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+            let xR = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+            let yU = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+            let yD = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+        }
+        if(back = true) {
+            let progress = time / (2 * duration);
+            let progress = (time - (progress * (2 * duration)));
+            let progress = (progress * 50) / duration;
+            if(progress > 50) {
+                let progress = progress - 50;
+                let xL = ((rxLi * progress) + (rxLf * (50 - progress))) / 50;
+                let xR = ((rxRi * progress) + (rxRf * (50 - progress))) / 50;
+                let yU = ((ryUi * progress) + (ryUf * (50 - progress))) / 50;
+                let yD = ((ryDi * progress) + (ryDf * (50 - progress))) / 50;
             }
-            if(((x + size) > xL) & (x < xL)) {
-                // do Output.printString("XL EDGE!");
-                // do Output.println();
-                let xStat = xL - size;
+            else {
+                let xL = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+                let xR = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+                let yU = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+                let yD = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
             }
         }
+        do detectSquare(xL, xR, yU, yD, x, y, size);
+        return;
+    }
+
+    method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
+        var int xLoc, yLoc;
+        let xLoc = x + (size / 2);
+        let yLoc = y + (size / 2);
+        // TODO
         return;
     }
 }

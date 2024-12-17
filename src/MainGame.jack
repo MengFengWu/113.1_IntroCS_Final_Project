@@ -8,6 +8,7 @@ class MainGame {
    constructor MainGame new() {
       // The initial square is located in (0,0), has size 30, and is not moving.
       let square = Square.new(0, 239, 15);
+      let levelDrawer = LevelDrawer.new();
       let exit = false; 
       let currentLevel = 1;
       return this;
@@ -33,6 +34,8 @@ class MainGame {
 
       do square.move(currentLevel);
       do Sys.wait(5);  // delays the next movement
+      do levelDrawer.updateLevelMain(currentLevel);
+      do square.syncHitbox(levelDrawer.getTime());
       return;
    }
 

@@ -1,12 +1,37 @@
 class LevelDrawer {
+    field int time;
+
+    method int getTime() { return time; }
+
+    /*
+        function explanation:
+            drawLevel: draw tiles first time.
+            eraseLevel: clear all tiles.
+            updateLevel: update moving tiles.
+    */
 
     constructor LevelDrawer new() {
+        let time = 0;
         return this;
+    }
+
+    method void updateTime() {
+        let time = time + 1;
+        if(time > 10000) {
+            let time = time - 10000;
+        }
+        return;
     }
 
     method void drawLevelMain(int level) {
         if(level = 1) {
             do drawLevel1();
+        }
+        if(level = 2) {
+            do drawLevel2();
+        }
+        if(level = 3) {
+            do drawLevel3();
         }
         return;
     }
@@ -14,6 +39,19 @@ class LevelDrawer {
     method void eraseLevelMain(int level) {
         if(level = 1) {
             do eraseLevel1();
+        }
+        if(level = 2) {
+            do eraseLevel2();
+        }
+        if(level = 3) {
+            do eraseLevel3();
+        }
+        return;
+    }
+
+    method void updateLevelMain(int level) {
+        if(level = 2) {
+            do updateLevel2();
         }
         return;
     }
@@ -32,4 +70,82 @@ class LevelDrawer {
         return;
     }
 
+    method void drawLevel2() {
+        do Screen.setColor(true);
+        do updateLevel2();
+        return;
+    }
+
+    method void eraseLevel2() {
+        do Screen.setColor(false);
+        do updateMovingSquare(50, 100, 200, 250, 200, 250, 200, 250, 300, true, false);
+        return;
+    }
+
+    method void updateLevel2() {
+        do updateMovingSquare(50, 100, 200, 250, 200, 250, 200, 250, 300, true, false);
+        do updateTime();
+        do updateMovingSquare(50, 100, 200, 250, 200, 250, 200, 250, 300, true, true);
+        return;
+    }
+
+    method void drawLevel3() {
+        do Screen.setColor(true);
+        do drawTriangle(200, 250, 300, 200, true);
+        return;
+    }
+
+    method void eraseLevel3() {
+        do Screen.setColor(false);
+        do drawTriangle(200, 250, 300, 200, true);
+        return;
+    }
+
+    // API for moving tiles
+
+    method void updateMovingSquare(int rxLi, int rxRi, int ryUi, int ryDi, 
+                                    int rxLf, int rxRf, int ryUf, int ryDf,
+                                    int duration, bool back, bool set) {
+        var int xL, xR, yU, yD;
+        var int progress;
+        do Screen.setColor(set);
+        if(back = false) {
+            let progress = time / duration;
+            let progress = (time - (progress * duration));
+            let progress = (progress * 50) / duration;
+            let xL = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+            let xR = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+            let yU = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+            let yD = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+        }
+        if(back = true) {
+            let progress = time / (2 * duration);
+            let progress = (time - (progress * (2 * duration)));
+            let progress = (progress * 50) / duration;
+            if(progress > 50) {
+                let progress = progress - 50;
+                let xL = ((rxLi * progress) + (rxLf * (50 - progress))) / 50;
+                let xR = ((rxRi * progress) + (rxRf * (50 - progress))) / 50;
+                let yU = ((ryUi * progress) + (ryUf * (50 - progress))) / 50;
+                let yD = ((ryDi * progress) + (ryDf * (50 - progress))) / 50;
+            }
+            else {
+                let xL = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+                let xR = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+                let yU = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+                let yD = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+            }
+        }
+        do Screen.drawRectangle(xL, yU, xR, yD);
+        return;
+    }
+
+    method void drawTriangle(int x1, int y1, int x2, int y2, bool fill) {
+        var int start, end;
+        do Screen.drawLine(x1, y1, x2, y2);
+        if(fill = true) {
+            // TODO
+        }
+        return;
+    }
 }
