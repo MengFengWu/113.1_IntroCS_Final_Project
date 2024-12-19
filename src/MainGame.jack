@@ -24,6 +24,7 @@ class MainGame {
 
    /** Moves the square in the current direction. */
    method void moveSquare(int key) {
+      var int levelUp;
       if (key = 81)  { let exit = true; }     // q key
       //if (key = 90)  { do square.decSize(); } // z key
       //if (key = 88)  { do square.incSize(); } // x key
@@ -34,7 +35,12 @@ class MainGame {
       if (key = 132) { do square.setDirection(1); }   // right arrow
       if (key = 80) { do square.printInfo(); }
 
-      do square.move(currentLevel);
+      let levelUp = square.move(currentLevel);
+      if(~(levelUp = 0)) {
+         do levelDrawer.eraseLevelMain(currentLevel);
+         let currentLevel = currentLevel + levelUp;
+         do levelDrawer.drawLevelMain(currentLevel);
+      }
       do Sys.wait(5);  // delays the next movement
       do levelDrawer.updateLevelMain(currentLevel);
       do square.syncHitbox(levelDrawer.getTime());

@@ -12,11 +12,24 @@ class Square {
    field int direction; // 1: right, -1: left, 0: none;
    field bool isStable; // true: stable, can Jump;
    field Hitbox hitbox;
+   field int levelUp;
+   field int level;
+
+   field Array wasX, wasY;
+   field int timeDelay;
+   field int currentLoc;
+   field int counter;
+   field bool delayStart;
 
    /** Constructs and draws a new square with a given location and size. */
    constructor Square new(int ax, int ay, int asize) {
       let x = ax;
       let y = ay;
+      let timeDelay = 15;
+      let wasX = Array.new(200);
+      let wasY = Array.new(200);
+      let currentLoc = 0;
+      let counter = 0;
       let size = asize;
       let g = 3;
       let vy = 0;
@@ -25,6 +38,7 @@ class Square {
       let velMul = 10;
       let jumpVel = 70;
       let isStable = false;
+      let levelUp = 0;
       do draw();
       let hitbox = Hitbox.new();
       return this;
@@ -33,22 +47,91 @@ class Square {
    /** Disposes this square. */
    method void dispose() {
       do Memory.deAlloc(this);
+      do wasX.dispose();
+      do wasY.dispose();
       return;
    }
 
    /** Draws this square in its current (x,y) location */
    method void draw() {
       // Draws the square using the color black
+      var int realYU, realYD;
       do Screen.setColor(true);
-      do Screen.drawRectangle(x, y, x + size, y + size);
+      if(y < 0) {
+         let realYU = 0;
+      }
+      else {
+         let realYU = y;
+      }
+      if((y + size) > 254) {
+         let realYD = 254;
+      }
+      else {
+         let realYD = y + size;
+      }
+      do Screen.drawRectangle(x, realYU, x + size, realYD);
+      return;
+   }
+
+   method void initDelay() {
+      let counter = 0;
+      let currentLoc = 0;
+      let wasX[0] = x;
+      let wasY[0] = y;
+      let delayStart = false;
+      do Screen.setColor(true);
+      do Screen.drawRectangle(0, 0, 510, 254);
+      return;
+   }
+
+   method void delayDraw() {
+      var int realYU, realYD;
+      var int index;
+      if(delayStart = true) {
+         let index = counter;
+         do Screen.setColor(true);
+         if(wasY[index] < 0) {
+            let realYU = 0;
+         }
+         else {
+            let realYU = wasY[index];
+         }
+         if((wasY[index] + size) > 254) {
+            let realYD = 254;
+         }
+         else {
+            let realYD = wasY[index] + size;
+         }
+         do Screen.drawRectangle(wasX[index], realYU, wasX[index] + size, realYD);
+         let counter = counter + 1;
+         if(counter = 200) {
+            let counter = 0;
+         }
+      }
       return;
    }
 
    /** Erases this square. */
    method void erase() {
       // Draws the square using the color white (background color)
+      var int realYU, realYD;
+      if((level = 4) & (delayStart = true) & (x = wasX[counter]) & (y = wasY[counter])) {
+         return;
+      }
       do Screen.setColor(false);
-      do Screen.drawRectangle(x, y, x + size, y + size);
+      if(y < 0) {
+         let realYU = 0;
+      }
+      else {
+         let realYU = y;
+      }
+      if((y + size) > 254) {
+         let realYD = 254;
+      }
+      else {
+         let realYD = y + size;
+      }
+      do Screen.drawRectangle(x, realYU, x + size, realYD);
       return;
    }
 
@@ -144,6 +227,19 @@ class Square {
       let y = hitbox.getY();
       let vy = hitbox.getVY();
       let isStable = hitbox.getStable();
+      let levelUp = hitbox.getLevelUp();
+
+      if(level = 4) {
+         let currentLoc = currentLoc + 1;
+         if(currentLoc = timeDelay) {
+            let delayStart = true;
+         }
+         if(currentLoc = 200) {
+            let currentLoc = 0;
+         }
+         let wasX[currentLoc] = x;
+         let wasY[currentLoc] = y;
+      }
 
       return;
    }
@@ -154,18 +250,27 @@ class Square {
    }
 
    /** Moves the square left by 2 pixels (if possible). */
-   method void move(int level) {
+   method int move(int lev) {
       // do Screen.setColor(false);
       // do Screen.drawRectangle((x + size) - 1, y, x + size, y + size);
       do erase();
       // let x = x - 2;
       do changeVelY();
-      do changePosition(level);
+      do changePosition(lev);
       // let y = y + (vy / velMul);
       // do Screen.setColor(true);
       // do Screen.drawRectangle(x, y, x + 1, y + size);
-      do draw();
-      return;
+      if(lev = 4) {
+         if(~(level = 4)) {
+            do initDelay();
+         }
+         do delayDraw();
+      }
+      else {
+         do draw();
+      }
+      let level = lev;
+      return levelUp;
    }
 
    /** Moves the square right by 2 pixels (if possible). */
@@ -195,6 +300,12 @@ class Square {
       do Output.println();
       do Output.printString("y: ");
       do Output.printInt(y);
+      do Output.println();
+      do Output.printString("vx: ");
+      do Output.printInt(vx);
+      do Output.println();
+      do Output.printString("x: ");
+      do Output.printInt(x);
       do Output.println();
       return;
    }

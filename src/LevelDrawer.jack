@@ -33,6 +33,12 @@ class LevelDrawer {
         if(level = 3) {
             do drawLevel3();
         }
+        if(level = 4) {
+            do drawLevel4();
+        }
+        if(level = 5) {
+            do drawLevel5();
+        }
         return;
     }
 
@@ -45,6 +51,12 @@ class LevelDrawer {
         }
         if(level = 3) {
             do eraseLevel3();
+        }
+        if(level = 4) {
+            do eraseLevel4();
+        }
+        if(level = 5) {
+            do eraseLevel5();
         }
         return;
     }
@@ -68,11 +80,25 @@ class LevelDrawer {
         do drawRectangle(200, 280, 234, 254); // third step
         do drawRectangle(300, 330, 170, 230); // fourth step
         do drawRectangle(380, 420, 170, 254); // fifth step
+
+        do drawRectangle(0, 70, 50, 130); // TEST ONLY
         return;
     }
 
     method void eraseLevel1() {
         do Screen.setColor(false);
+        do drawRectangle(0, 450, 122, 132); // mid floor
+        do drawRectangle(0, 25, 122, 152); // AmongUs
+        do drawRectangle(470, 510, 184, 254); // right step up
+        do drawRectangle(50, 90, 214, 254); // first step
+        do drawRectangle(50, 90, 158, 182); // AmongUsEye
+        do drawRectangle(125, 145, 164, 254); // second step
+        do drawRectangle(110, 145, 122, 139); // second step head
+        do drawRectangle(200, 280, 234, 254); // third step
+        do drawRectangle(300, 330, 170, 230); // fourth step
+        do drawRectangle(380, 420, 170, 254); // fifth step
+
+        do drawRectangle(0, 70, 50, 130); // TEST ONLY
         /** Remember to erase at last*/
         return;
     }
@@ -109,6 +135,43 @@ class LevelDrawer {
         do drawRectangle(0, 100, 100, 250);
         do drawTriangle(100, 100, 400, 250, true);
         do drawTriangle(450, 250, 500, 200, true);
+        return;
+    }
+
+    method void drawLevel4() {
+        do Screen.setColor(true);
+        do drawRectangle(0, 510, 0, 254); // dark mode
+
+        do drawRectangle(0, 450, 122, 132); // mid floor
+        do drawRectangle(0, 25, 122, 152); // AmongUs
+        do drawRectangle(470, 510, 184, 254); // right step up
+        do drawRectangle(50, 90, 214, 254); // first step
+        do drawRectangle(50, 90, 158, 182); // AmongUsEye
+        do drawRectangle(125, 145, 164, 254); // second step
+        do drawRectangle(110, 145, 122, 139); // second step head
+        do drawRectangle(200, 280, 234, 254); // third step
+        do drawRectangle(300, 330, 170, 230); // fourth step
+        do drawRectangle(380, 420, 170, 254); // fifth step
+
+        do drawRectangle(0, 70, 50, 130); // TEST ONLY
+        return;
+    }
+
+    method void eraseLevel4() {
+        do Screen.setColor(false);
+        do drawRectangle(0, 510, 0, 254);
+        return;
+    }
+
+    method void eraseLevel5() {
+        do Screen.setColor(false);
+        do drawRectangle(0, 70, 50, 130);
+        return;
+    }
+
+    method void drawLevel5() {
+        do Screen.setColor(true);
+        do drawRectangle(0, 70, 50, 130);
         return;
     }
 

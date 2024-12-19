@@ -4,6 +4,7 @@ class Hitbox {
     field bool stableStat;
     field int buffer;
     field int time;
+    field int levelUp;
 
     constructor Hitbox new() {
         let xStat = 0;
@@ -12,6 +13,7 @@ class Hitbox {
         let stableStat = false;
         let buffer = 1;
         let time = 0;
+        let levelUp = 0;
         return this;
     }
 
@@ -19,6 +21,7 @@ class Hitbox {
     method int getY() { return yStat; }
     method int getVY() { return vyStat; }
     method bool getStable() { return stableStat; }
+    method bool getLevelUp() { return levelUp; }
     method void setTime(int t) { 
         let time = t;
         return;
@@ -30,6 +33,7 @@ class Hitbox {
         let yStat = y;
         let vyStat = vy;
         let stableStat = s;
+        let levelUp = 0;
         
         if(level = 0) {
             do detectLevel0(x, y, vy, s, size);
@@ -42,6 +46,12 @@ class Hitbox {
         }
         if(level = 3) {
             do detectLevel3(x, y, vy, s, size);
+        }
+        if(level = 4) {
+            do detectLevel4(x, y, vy, s, size);
+        }
+        if(level = 5) {
+            do detectLevel5(x, y, vy, s, size);
         }
         return;
     }
@@ -87,21 +97,15 @@ class Hitbox {
         do detectSquare(300, 330, 170, 230, xStat, yStat, size); // fourth step
         do detectSquare(380, 420, 170, 254, xStat, yStat, size); // fifth step
 
-        if(xStat < 1) {
-            let xStat = 1;
-        }
-        if((xStat + size) > 510) {
-            let xStat = 510 - size;
-        }
-        if(yStat < 1) {
-            let yStat = 1;
-            let vyStat = 0;
-        }
+        do detectSquare(0, 70, 50, 130, xStat, yStat, size); // TEST ONLY
+
+        do detectWall(xStat, yStat, size);
         if((yStat + size) > 254) {
             let yStat = 254 - size;
             let vyStat = 0;
             let stableStat = true;
         }
+        do detectHeight(xStat, yStat, size);
 
         return;
     }
@@ -114,21 +118,8 @@ class Hitbox {
 
         do detectMovingSquare(50, 100, 200, 250, 200, 250, 200, 250, xStat, yStat, size, 300, true);
 
-        if(xStat < 1) {
-            let xStat = 1;
-        }
-        if((xStat + size) > 510) {
-            let xStat = 510 - size;
-        }
-        if(yStat < 1) {
-            let yStat = 1;
-            let vyStat = 0;
-        }
-        if((yStat + size) > 254) {
-            let yStat = 254 - size;
-            let vyStat = 0;
-            let stableStat = true;
-        }
+        do detectWall(xStat, yStat, size);
+        do detectHeight(xStat, yStat, size);
 
         return;
     }
@@ -143,26 +134,75 @@ class Hitbox {
         do detectTriangle(100, 100, 400, 250, xStat, yStat, size);
         do detectTriangle(450, 250, 500, 200, xStat, yStat, size);
 
-        if(xStat < 1) {
-            let xStat = 1;
-        }
-        if((xStat + size) > 510) {
-            let xStat = 510 - size;
-        }
-        if(yStat < 1) {
-            let yStat = 1;
-            let vyStat = 0;
-        }
-        if((yStat + size) > 254) {
-            let yStat = 254 - size;
-            let vyStat = 0;
-            let stableStat = true;
-        }
+        do detectWall(xStat, yStat, size);
+        do detectHeight(xStat, yStat, size);
+
+        return;
+    }
+
+    method void detectLevel4(int x, int y, int vy, bool s, int size) {
+        let xStat = x;
+        let yStat = y;
+        let vyStat = vy;
+        let stableStat = s;
+        
+        do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
+        do detectSquare(0, 25, 122, 152, xStat, yStat, size); // AmongUs1
+        do detectSquare(470, 510, 184, 254, xStat, yStat, size); // right step up
+        do detectSquare(50, 90, 214, 254, xStat, yStat, size); // first step
+        do detectSquare(50, 90, 158, 182, xStat, yStat, size); // AmongUsEye
+        do detectSquare(125, 145, 164, 254, xStat, yStat, size); // second step
+        do detectSquare(110, 145, 122, 139, xStat, yStat, size); // second step head
+        do detectSquare(200, 280, 234, 254, xStat, yStat, size); // third step
+        do detectSquare(300, 330, 170, 230, xStat, yStat, size); // fourth step
+        do detectSquare(380, 420, 170, 254, xStat, yStat, size); // fifth step
+
+        do detectSquare(0, 70, 50, 130, xStat, yStat, size); // TEST ONLY
+
+        do detectWall(xStat, yStat, size);
+        do detectHeight(xStat, yStat, size);
+
+        return;
+    }
+
+    method void detectLevel5(int x, int y, int vy, bool s, int size) {
+        let xStat = x;
+        let yStat = y;
+        let vyStat = vy;
+        let stableStat = s;
+
+        do detectSquare(0, 70, 50, 130, xStat, yStat, size); // TEST ONLY
+
+        do detectWall(xStat, yStat, size);
+        do detectHeight(xStat, yStat, size);
 
         return;
     }
 
     // API for detectings
+
+    method void detectWall(int x, int y, int size) {
+        if(x < 1) {
+            let xStat = 1;
+        }
+        if((x + size) > 510) {
+            let xStat = 510 - size;
+        }
+        return;
+    }
+
+    method void detectHeight(int x, int y, int size) {
+        if((y + size) < 0) {
+            let levelUp = 1;
+            let yStat = 254 + y + size;
+            // let vyStat = 0;
+        }
+        if(y > 254) {
+            let levelUp = -1;
+            let yStat = y - 254;
+        }
+        return;
+    }
 
     method void detectSquare(int rxL, int rxR, int ryU, int ryD, int x, int y, int size) {
         var int xL, xR, yU, yD;
