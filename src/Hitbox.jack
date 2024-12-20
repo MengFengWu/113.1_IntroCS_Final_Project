@@ -86,25 +86,25 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         
-        do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
+        do detectSquare(0, 450, 127, 137, xStat, yStat, size); // mid floor
         // to lowerhalf
         do detectSquare(0, 25, 122, 152, xStat, yStat, size); // AmongUs1
-        do detectSquare(470, 510, 184, 254, xStat, yStat, size); // right step up
+        do detectSquare(470, 510, 194, 254, xStat, yStat, size); // right step up
         do detectSquare(50, 90, 214, 254, xStat, yStat, size); // first step
         do detectSquare(50, 80, 158, 182, xStat, yStat, size); // AmongUsEye
-        do detectSquare(125, 145, 164, 254, xStat, yStat, size); // second step
-        do detectSquare(110, 145, 122, 139, xStat, yStat, size); // second step head
+        do detectSquare(125, 145, 174, 254, xStat, yStat, size); // second step
+        do detectSquare(110, 145, 127, 146, xStat, yStat, size); // second step head
         do detectSquare(200, 280, 234, 254, xStat, yStat, size); // third step
         do detectSquare(200, 250, 160, 162, xStat, yStat, size); // place smth?
         do detectSquare(300, 330, 170, 230, xStat, yStat, size); // fourth step
         do detectSquare(380, 420, 170, 254, xStat, yStat, size); // fifth step
         // to upperhalf
-        do detectSquare(380, 430, 107, 122, xStat, yStat, size); // up1
-        do detectSquare(460, 500, 50, 70, xStat, yStat, size); // up2
-        do detectSquare(368, 370, 25, 80, xStat, yStat, size); // wall b/w 13
-        do detectSquare(300, 360, 25, 50, xStat, yStat, size); // up3
-        do detectSquare(200, 240, 25, 50, xStat, yStat, size); // up4
-        do detectSquare(120, 122, 25, 122, xStat, yStat, size); // wall b/w 45
+        do detectSquare(380, 430, 112, 127, xStat, yStat, size); // up1
+        do detectSquare(460, 500, 55, 75, xStat, yStat, size); // up2
+        do detectSquare(368, 370, 30, 85, xStat, yStat, size); // wall b/w 13
+        do detectSquare(300, 360, 30, 55, xStat, yStat, size); // up3
+        do detectSquare(200, 240, 30, 55, xStat, yStat, size); // up4
+        do detectSquare(120, 122, 30, 127, xStat, yStat, size); // wall b/w 45
         
         do detectSquare(0, 25, 20, 130, xStat, yStat, size); // stair 1
         do detectSquare(0, 55, 52, 130, xStat, yStat, size); // stair 2
@@ -126,8 +126,14 @@ class Hitbox {
         let yStat = y;
         let vyStat = vy;
         let stableStat = s;
-        do detectSquare(50, 90, 234, 254, xStat, yStat, size); // first step
-        do detectMovingSquare(50, 100, 100, 150, 200, 250, 100, 150, xStat, yStat, size, 300, true);
+        do detectSquare(50, 90, 234, 254, xStat, yStat, size); // lvl2 1
+        //do detectSquare(50, 510, 253, 254, xStat, yStat, size); // lvl2 floor (delete)
+        do detectMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, xStat, yStat, size, true); // moving plate 1
+        do detectMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, xStat, yStat, size, true); // moving plate 2
+        do detectMovingSquare(380, 400, 130, 180, 380, 400, 204, 254, 100, xStat, yStat, size, true); // moving obstacle 1
+        do detectSquare(470, 510, 190, 200, xStat, yStat, size); // lvl2 2
+        do detectMovingSquare(420, 460, 150, 180, 420, 460, 80, 180, 240, xStat, yStat, size, true); // lvl2 3
+
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
@@ -252,8 +258,8 @@ class Hitbox {
     }
 
     method void detectMovingSquare(int rxLi, int rxRi, int ryUi, int ryDi, 
-                                    int rxLf, int rxRf, int ryUf, int ryDf,
-                                    int x, int y, int size, int duration, bool back) {
+                                    int rxLf, int rxRf, int ryUf, int ryDf, int duration,
+                                    int x, int y, int size, bool back) {
         var int xL, xR, yU, yD;
         var int progress;
         if(back = false) {
