@@ -72,23 +72,23 @@ class LevelDrawer {
         do Screen.setColor(true);
         do drawRectangle(0, 450, 127, 137); // mid floor
         do drawRectangle(0, 25, 122, 152); // AmongUs
-        do drawRectangle(470, 510, 184, 254); // right step up
+        do drawRectangle(470, 510, 194, 254); // right step up
         do drawRectangle(50, 90, 214, 254); // first step
         do drawRectangle(50, 80, 158, 182); // AmongUsEye
-        do drawRectangle(125, 145, 164, 254); // second step
-        do drawRectangle(110, 145, 127, 139); // second step head
+        do drawRectangle(125, 145, 174, 254); // second step
+        do drawRectangle(110, 145, 127, 146); // second step head
         do drawRectangle(200, 280, 234, 254); // third step
-        do drawRectangle(200, 250, 160, 162); // place smth?
+        do drawRectangle(200, 250, 160, 162); // place item 1
         do drawRectangle(300, 330, 170, 230); // fourth step
         do drawRectangle(380, 420, 170, 254); // fifth step
-        //to upperhalf
+        // to upperhalf
         do drawRectangle(380, 430, 112, 127); // up1
-        do drawRectangle(460, 500, 55, 75); // up2
+        do drawRectangle(460, 510, 55, 75); // up2
         do drawRectangle(368, 370, 30, 85); // wall b/w 13
         do drawRectangle(300, 360, 30, 55); // up3
         do drawRectangle(200, 240, 30, 50); // up4
         do drawRectangle(120, 122, 30, 127); // wall b/w 45
-
+        // end stairs
         do drawRectangle(0, 25, 20, 130); // stair 1
         do drawRectangle(0, 55, 52, 130); // stair 2
         do drawRectangle(0, 85, 87, 130); // stair 3
@@ -96,6 +96,7 @@ class LevelDrawer {
     }
 
     method void eraseLevel1() {
+        /** Remember to erase after finish design*/
         do Screen.setColor(false);
         do drawRectangle(0, 450, 127, 137); // mid floor
         do drawRectangle(0, 25, 122, 152); // AmongUs
@@ -105,69 +106,87 @@ class LevelDrawer {
         do drawRectangle(125, 145, 174, 254); // second step
         do drawRectangle(110, 145, 127, 146); // second step head
         do drawRectangle(200, 280, 234, 254); // third step
-        do drawRectangle(200, 250, 160, 162); // place smth?
+        do drawRectangle(200, 250, 160, 162); // place item 1
         do drawRectangle(300, 330, 170, 230); // fourth step
         do drawRectangle(380, 420, 170, 254); // fifth step
-        //to upperhalf
+        // to upperhalf
         do drawRectangle(380, 430, 112, 127); // up1
-        do drawRectangle(460, 500, 55, 75); // up2
+        do drawRectangle(460, 510, 55, 75); // up2
         do drawRectangle(368, 370, 30, 85); // wall b/w 13
         do drawRectangle(300, 360, 30, 55); // up3
         do drawRectangle(200, 240, 30, 50); // up4
         do drawRectangle(120, 122, 30, 127); // wall b/w 45
-
+        // end stairs
         do drawRectangle(0, 25, 20, 130); // stair 1
         do drawRectangle(0, 55, 52, 130); // stair 2
         do drawRectangle(0, 85, 87, 130); // stair 3
-        /** Remember to erase at last*/
         return;
     }
 
     method void drawLevel2() {
         do Screen.setColor(true);
         do drawRectangle(50, 90, 234, 254); // lvl2 1
-        do drawRectangle(470, 510, 190, 200); // lvl2 1
+        //do drawRectangle(470, 510, 190, 200); // lvl2 2
+        do drawRectangle(410, 450, 85, 95); // lvl2 4
+        do drawRectangle(10, 50, 130, 140); // place item 2
+        do drawRectangle(10, 50, 20, 30); // lvl2 5
+
         do updateLevel2();
         return;
     }
 
     method void eraseLevel2() {
+        /** Remember to erase after finish design*/
         do Screen.setColor(false);
-        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, false);
-        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, false);
-        do updateMovingSquare(380, 400, 130, 180, 380, 400, 204, 254, 100, true, false);
-        do updateMovingSquare(420, 460, 150, 180, 420, 460, 80, 180, 240, true, false);
+        do drawRectangle(50, 90, 234, 254); // lvl2 1
+        //do drawRectangle(470, 510, 190, 200); // lvl2 2
+        do drawRectangle(410, 450, 85, 95); // lvl2 4
+        do drawRectangle(10, 50, 130, 140); // place item 2
+        do drawRectangle(10, 50, 20, 30); // lvl2 5
+        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, false); // moving plate 1
+        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, false); // moving plate 2
+        do updateMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, true, false); // moving obstacle 1
+        do updateMovingSquare(420, 460, 170, 180, 460, 500, 80, 180, 173, true, false); // lvl2 3
+        do updateMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, true, false); // expand stand 1
+        do updateMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, true, false); // expand stand 2
+        do updateMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, true, false); // expand stand 3
         return;
     }
 
     method void updateLevel2() {
-        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, false);
-        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, false);
-        do updateMovingSquare(380, 400, 130, 180, 380, 400, 204, 254, 100, true, false);
-        do updateMovingSquare(420, 460, 150, 180, 420, 460, 80, 180, 240, true, false);
+        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, false); // moving plate 1
+        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, false); // moving plate 2
+        do updateMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, true, false); // moving obstacle 1
+        do updateMovingSquare(420, 460, 170, 180, 460, 500, 80, 180, 173, true, false); // lvl2 3
+        do updateMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, true, false); // expand stand 1
+        do updateMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, true, false); // expand stand 2
+        do updateMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, true, false); // expand stand 3
 
         do updateTime();
-        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, true);
-        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, true);
-        do updateMovingSquare(380, 400, 130, 180, 380, 400, 204, 254, 100, true, true);
-        do updateMovingSquare(420, 460, 150, 180, 420, 460, 80, 180, 240, true, true);
+        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, true); // moving plate 1
+        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, true); // moving plate 2
+        do updateMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, true, true); // moving obstacle 1
+        do updateMovingSquare(420, 460, 170, 180, 460, 500, 80, 180, 173, true, true); // lvl2 3
+        do updateMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, true, true); // expand stand 1
+        do updateMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, true, true); // expand stand 2
+        do updateMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, true, true); // expand stand 3
 
         return;
     }
 
     method void drawLevel3() {
         do Screen.setColor(true);
-        do drawRectangle(0, 100, 100, 250);
-        do drawTriangle(100, 100, 400, 250, true);
-        do drawTriangle(450, 250, 500, 200, true);
+        // do drawRectangle(0, 100, 100, 250);
+        // do drawTriangle(100, 100, 400, 250, true);
+        // do drawTriangle(450, 250, 500, 200, true);
         return;
     }
 
     method void eraseLevel3() {
         do Screen.setColor(false);
-        do drawRectangle(0, 100, 100, 250);
-        do drawTriangle(100, 100, 400, 250, true);
-        do drawTriangle(450, 250, 500, 200, true);
+        // do drawRectangle(0, 100, 100, 250);
+        // do drawTriangle(100, 100, 400, 250, true);
+        // do drawTriangle(450, 250, 500, 200, true);
         return;
     }
 

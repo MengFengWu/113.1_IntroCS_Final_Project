@@ -8,7 +8,7 @@ class MainGame {
    constructor MainGame new() {
       // The initial square is located in (0,239), has size 15, and is not moving.
       let square = Square.new(0, 239, 15); // new square
-      //let square = Square.new(0, 0, 15); // for designing level 2
+      // let square = Square.new(0, 0, 15); // for designing level 2
       let levelDrawer = LevelDrawer.new();
       let exit = false; 
       let currentLevel = 1;

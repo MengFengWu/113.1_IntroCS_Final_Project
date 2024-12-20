@@ -95,12 +95,12 @@ class Hitbox {
         do detectSquare(125, 145, 174, 254, xStat, yStat, size); // second step
         do detectSquare(110, 145, 127, 146, xStat, yStat, size); // second step head
         do detectSquare(200, 280, 234, 254, xStat, yStat, size); // third step
-        do detectSquare(200, 250, 160, 162, xStat, yStat, size); // place smth?
+        do detectSquare(200, 250, 160, 162, xStat, yStat, size); // place item 1
         do detectSquare(300, 330, 170, 230, xStat, yStat, size); // fourth step
         do detectSquare(380, 420, 170, 254, xStat, yStat, size); // fifth step
         // to upperhalf
         do detectSquare(380, 430, 112, 127, xStat, yStat, size); // up1
-        do detectSquare(460, 500, 55, 75, xStat, yStat, size); // up2
+        do detectSquare(460, 510, 55, 75, xStat, yStat, size); // up2
         do detectSquare(368, 370, 30, 85, xStat, yStat, size); // wall b/w 13
         do detectSquare(300, 360, 30, 55, xStat, yStat, size); // up3
         do detectSquare(200, 240, 30, 55, xStat, yStat, size); // up4
@@ -127,12 +127,18 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         do detectSquare(50, 90, 234, 254, xStat, yStat, size); // lvl2 1
-        //do detectSquare(50, 510, 253, 254, xStat, yStat, size); // lvl2 floor (delete)
+        // do detectSquare(50, 510, 253, 254, xStat, yStat, size); // lvl2 floor (delete)
         do detectMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, xStat, yStat, size, true); // moving plate 1
         do detectMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, xStat, yStat, size, true); // moving plate 2
-        do detectMovingSquare(380, 400, 130, 180, 380, 400, 204, 254, 100, xStat, yStat, size, true); // moving obstacle 1
-        do detectSquare(470, 510, 190, 200, xStat, yStat, size); // lvl2 2
-        do detectMovingSquare(420, 460, 150, 180, 420, 460, 80, 180, 240, xStat, yStat, size, true); // lvl2 3
+        do detectMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, xStat, yStat, size, true); // moving obstacle 1
+        //do detectSquare(470, 510, 190, 200, xStat, yStat, size); // lvl2 2
+        do detectMovingSquare(420, 460, 170, 180, 460, 500, 100, 180, 173, xStat, yStat, size, true); // lvl2 3
+        do detectSquare(410, 450, 85, 95, xStat, yStat, size); // lvl2 4
+        do detectMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, xStat, yStat, size, true); // expand stand 1
+        do detectMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, xStat, yStat, size, true); // expand stand 2
+        do detectMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, xStat, yStat, size, true); // expand stand 3
+        do detectSquare(10, 50, 130, 140, xStat, yStat, size); // place item 2
+        do detectSquare(10, 50, 20, 30, xStat, yStat, size); // lvl2 5
 
 
         do detectWall(xStat, yStat, size);
@@ -147,9 +153,9 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectSquare(0, 100, 100, 250, xStat, yStat, size);
-        do detectTriangle(100, 100, 400, 250, xStat, yStat, size);
-        do detectTriangle(450, 250, 500, 200, xStat, yStat, size);
+        // do detectSquare(0, 100, 100, 250, xStat, yStat, size);
+        // do detectTriangle(100, 100, 400, 250, xStat, yStat, size);
+        // do detectTriangle(450, 250, 500, 200, xStat, yStat, size);
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
