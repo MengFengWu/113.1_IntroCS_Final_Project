@@ -319,6 +319,9 @@ class Hitbox {
             let xLoc = x + size;
             let yLoc = y + size;
             let top = detectTriangleAux(x1, y1, x2, y2, xLoc);
+            if(top < 0) {
+                return;
+            }
             if(yLoc > top) {
                 if(y > top) {
                     let yStat = y1;
@@ -337,6 +340,9 @@ class Hitbox {
             let xLoc = x;
             let yLoc = y + size;
             let top = detectTriangleAux(x1, y1, x2, y2, xLoc);
+            if(top < 0) {
+                return;
+            }
             if(yLoc > top) {
                 if(y > top) {
                     let yStat = y2;
@@ -363,11 +369,11 @@ class Hitbox {
                 return midy;
             }
             else {
-                if((x1 - 1 < goal) & (goal < midx)) {
+                if(goal < midx) {
                     let result = detectTriangleAux(x1, y1, midx - 1, midy, goal);
                     return result;
                 }
-                if((midx < goal) & (goal < x2 + 1)) {
+                if(goal > midx) {
                     let result = detectTriangleAux(midx + 1, midy, x2, y2, goal);
                     return result;
                 }
