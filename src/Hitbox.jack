@@ -357,12 +357,12 @@ class Hitbox {
                 return midy;
             }
             else {
-                let result = detectTriangleAux(x1, y1, midx - 1, midy, goal);
-                if(result > 0) {
+                if((x1 - 1 < goal) & (goal < midx)) {
+                    let result = detectTriangleAux(x1, y1, midx - 1, midy, goal);
                     return result;
                 }
-                let result = detectTriangleAux(midx + 1, midy, x2, y2, goal);
-                if(result > 0) {
+                if((midx < goal) & (goal < x2 + 1)) {
+                    let result = detectTriangleAux(midx + 1, midy, x2, y2, goal);
                     return result;
                 }
             }
