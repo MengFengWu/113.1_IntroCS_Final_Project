@@ -127,7 +127,8 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         do detectSquare(35, 80, 239, 254, xStat, yStat, size); // lvl2 1
-        // do detectSquare(50, 510, 253, 254, xStat, yStat, size); // construction floor
+        do detectSquare(0, 510, 40, 41, xStat, yStat, size); // construction floor
+        /**
         do detectMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, xStat, yStat, size, true); // moving plate 1
         do detectMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, xStat, yStat, size, true); // moving plate 2
         do detectMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, xStat, yStat, size, true); // moving obstacle 1
@@ -137,8 +138,10 @@ class Hitbox {
         do detectMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, xStat, yStat, size, true); // expand stand 1
         do detectMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, xStat, yStat, size, true); // expand stand 2
         do detectMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, xStat, yStat, size, true); // expand stand 3
+        */
         do detectSquare(10, 50, 130, 140, xStat, yStat, size); // place item 2
         do detectSquare(10, 50, 20, 30, xStat, yStat, size); // lvl2 5
+
 
 
         do detectWall(xStat, yStat, size);
@@ -154,10 +157,13 @@ class Hitbox {
         let stableStat = s;
 
         do detectSquare(17, 80, 244, 254, xStat, yStat, size); // lvl3 1
-        do detectSquare(30, 510, 253, 254, xStat, yStat, size); // construction floor
+        do detectSquare(30, 510, 250, 254, xStat, yStat, size); // construction floor
         //method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
-        do detectTriangle(200, 100, 250, 150, xStat, yStat, size);
-        // do detectTriangle(450, 250, 500, 200, xStat, yStat, size);
+        do detectSquare(150, 200, 200, 250, xStat, yStat, size); // Lstep
+        do detectTriangle(200, 150, 300-10, 220, xStat, yStat, size); // tri 1
+        do detectSquare(200, 201, 150, 250, xStat, yStat, size); // triside 1
+        do detectSquare(320-10, 370, 180, 250, xStat, yStat, size); // Rstep
+        do detectSquare(200, 280, 120, 130, xStat, yStat, size); // Rstep 2
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
