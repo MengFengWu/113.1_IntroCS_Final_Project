@@ -14,7 +14,7 @@ class MainGame {
       // The initial square is located in (0,239), has size 15, and is not moving.
       // let square = Square.new(0, 239, 15); // new square
       let square = Square.new(0, 0, 15); // for designing level 3
-      let currentLevel = 2;
+      let currentLevel = 1;
       let levelDrawer = LevelDrawer.new();
       let currentItem_X = Array.new(10);
       let currentItem_Y = Array.new(10);
@@ -22,11 +22,10 @@ class MainGame {
       let currentItem_X[0] = 224;
       let currentItem_Y[0] = 160;
       let currentItem_level[0] = 1;
-      let currentItem_X[1] = 150;
-      let currentItem_Y[1] = 60;
+      let currentItem_X[1] = 256;
+      let currentItem_Y[1] = 40;
       let currentItem_level[1] = 1;
       let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
-      do item.draw();
       let exit = false; 
       return this;
    }
@@ -51,14 +50,6 @@ class MainGame {
       if (key = 132) { do square.setDirection(1); }   // right arrow
       if (key = 80) { do square.printInfo(); }
 
-      let levelUp = square.move(currentLevel);
-      if(~(levelUp = 0)) {
-         do levelDrawer.eraseLevelMain(currentLevel);
-         let currentLevel = currentLevel + levelUp;
-         do levelDrawer.drawLevelMain(currentLevel);
-         do item.erase();
-      }
-      do Sys.wait(5);  // delays the next movement
       if(currentLevel = currentItem_level[currentItem_progress]) {
          do item.draw();
          if(item.detect(square) = true) {
@@ -69,6 +60,14 @@ class MainGame {
       }
       do levelDrawer.updateLevelMain(currentLevel);
       do square.syncHitbox(levelDrawer.getTime());
+      let levelUp = square.move(currentLevel);
+      if(~(levelUp = 0)) {
+         do levelDrawer.eraseLevelMain(currentLevel);
+         let currentLevel = currentLevel + levelUp;
+         do levelDrawer.drawLevelMain(currentLevel);
+         do item.erase();
+      }
+      do Sys.wait(5);  // delays the next movement
       return;
    }
 
