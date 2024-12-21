@@ -307,23 +307,39 @@ class Hitbox {
             return;
         }
         if(y1 > y2) { // if y1 > y2 (/), check x + size, y + size
+            if(y > y1) {
+                return;
+            }
             let xLoc = x + size;
             let yLoc = y + size;
             let top = detectTriangleAux(x1, y1, x2, y2, xLoc);
             if(yLoc > top) {
-                let yStat = top - size;
-                let stableStat = false;
-                let xStat = xStat - ((((y1 - y2)/(x2 - x1)) + 1) * vyStat / 10);
+                if(y > top) {
+                    let yStat = y1;
+                }
+                else {
+                    let yStat = top - size;
+                    let stableStat = false;
+                    let xStat = xStat - ((((y1 - y2)/(x2 - x1)) + 1) * vyStat / 10);
+                }
             }
         }
         else { // if y1 < y2 (\), check x, y + size
+            if(y > y2) {
+                return;
+            }
             let xLoc = x;
             let yLoc = y + size;
             let top = detectTriangleAux(x1, y1, x2, y2, xLoc);
             if(yLoc > top) {
-                let yStat = top - size;
-                let stableStat = false;
-                let xStat = xStat + ((((y2 - y1)/(x2 - x1)) + 1) * vyStat / 10);
+                if(y > top) {
+                    let yStat = y2;
+                }
+                else {
+                    let yStat = top - size;
+                    let stableStat = false;
+                    let xStat = xStat + ((((y2 - y1)/(x2 - x1)) + 1) * vyStat / 10);
+                }
             }
         }
         return;
