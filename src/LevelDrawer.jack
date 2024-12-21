@@ -154,14 +154,6 @@ class LevelDrawer {
     }
 
     method void updateLevel2() {
-        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, false); // moving plate 1
-        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, false); // moving plate 2
-        do updateMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, true, false); // moving obstacle 1
-        do updateMovingSquare(420, 460, 170, 180, 460, 500, 80, 180, 173, true, false); // lvl2 3
-        do updateMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, true, false); // expand stand 1
-        do updateMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, true, false); // expand stand 2
-        do updateMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, true, false); // expand stand 3
-
         do updateTime();
         do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, true); // moving plate 1
         do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, true); // moving plate 2
@@ -243,17 +235,48 @@ class LevelDrawer {
     method void updateMovingSquare(int rxLi, int rxRi, int ryUi, int ryDi, 
                                     int rxLf, int rxRf, int ryUf, int ryDf,
                                     int duration, bool back, bool set) {
-        var int xL, xR, yU, yD;
+        var int xLp, xRp, yUp, yDp;
+        var int xLn, xRn, yUn, yDn;
+        var int pTime;
         var int progress;
-        do Screen.setColor(set);
+        let pTime = time - 1;
+        // calculate last step
+        if(back = false) {
+            let progress = pTime / duration;
+            let progress = (pTime - (progress * duration));
+            let progress = (progress * 50) / duration;
+            let xLp = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+            let xRp = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+            let yUp = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+            let yDp = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+        }
+        if(back = true) {
+            let progress = pTime / (2 * duration);
+            let progress = (pTime - (progress * (2 * duration)));
+            let progress = (progress * 50) / duration;
+            if(progress > 50) {
+                let progress = progress - 50;
+                let xLp = ((rxLi * progress) + (rxLf * (50 - progress))) / 50;
+                let xRp = ((rxRi * progress) + (rxRf * (50 - progress))) / 50;
+                let yUp = ((ryUi * progress) + (ryUf * (50 - progress))) / 50;
+                let yDp = ((ryDi * progress) + (ryDf * (50 - progress))) / 50;
+            }
+            else {
+                let xLp = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+                let xRp = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+                let yUp = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+                let yDp = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+            }
+        }
+        // calculate next step
         if(back = false) {
             let progress = time / duration;
             let progress = (time - (progress * duration));
             let progress = (progress * 50) / duration;
-            let xL = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
-            let xR = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
-            let yU = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
-            let yD = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+            let xLn = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+            let xRn = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+            let yUn = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+            let yDn = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
         }
         if(back = true) {
             let progress = time / (2 * duration);
@@ -261,19 +284,29 @@ class LevelDrawer {
             let progress = (progress * 50) / duration;
             if(progress > 50) {
                 let progress = progress - 50;
-                let xL = ((rxLi * progress) + (rxLf * (50 - progress))) / 50;
-                let xR = ((rxRi * progress) + (rxRf * (50 - progress))) / 50;
-                let yU = ((ryUi * progress) + (ryUf * (50 - progress))) / 50;
-                let yD = ((ryDi * progress) + (ryDf * (50 - progress))) / 50;
+                let xLn = ((rxLi * progress) + (rxLf * (50 - progress))) / 50;
+                let xRn = ((rxRi * progress) + (rxRf * (50 - progress))) / 50;
+                let yUn = ((ryUi * progress) + (ryUf * (50 - progress))) / 50;
+                let yDn = ((ryDi * progress) + (ryDf * (50 - progress))) / 50;
             }
             else {
-                let xL = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
-                let xR = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
-                let yU = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
-                let yD = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
+                let xLn = ((rxLi * (50 - progress)) + (rxLf * progress)) / 50;
+                let xRn = ((rxRi * (50 - progress)) + (rxRf * progress)) / 50;
+                let yUn = ((ryUi * (50 - progress)) + (ryUf * progress)) / 50;
+                let yDn = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
             }
         }
-        do Screen.drawRectangle(xL, yU, xR, yD);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(xLp, yUp, xRp, yDp);
+        
+        if(set = true) {
+            do Screen.setColor(true);
+        }
+        else {
+            do Screen.setColor(false);
+        }
+        do Screen.drawRectangle(xLn, yUn, xRn, yDn);
+        do Screen.setColor(true);
         return;
     }
 
