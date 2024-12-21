@@ -171,9 +171,12 @@ class LevelDrawer {
         do drawRectangle(20, 90, 244, 254); // lvl3 1
         do drawTriangle(90, 254, 160, 184, true); // tri 1
         do drawRectangle(160, 210, 184, 194); // lvl3 2
-        do drawRectangle(280, 340, 214, 254); // lvl3 3
-        do drawTriangle(220, 254, 280, 214, true); // tri 2
-        do drawTriangle(340, 214, 400, 254, true); // tri 3
+        do drawRectangle(280-5, 340-5, 214, 254); // lvl3 3
+        do drawTriangle(220, 254, 280-5, 214, true); // tri 2
+        do drawTriangle(340-5, 214, 390, 254, true); // tri 3
+        do drawRectangle(460, 510, 204, 254); // lvl3 4
+        do drawTriangle(420, 254, 460, 204, true); // tri 4
+
 
         // do drawRectangle(0, 100, 100, 250);
         // do drawTriangle(100, 100, 400, 250, true);
@@ -186,9 +189,11 @@ class LevelDrawer {
         do drawRectangle(20, 90, 244, 254); // lvl3 1
         do drawTriangle(90, 254, 160, 184, true); // tri 1
         do drawRectangle(160, 210, 184, 194); // lvl3 2
-        do drawRectangle(280, 340, 214, 254); // lvl3 3
-        do drawTriangle(220, 254, 280, 214, true); // tri 2
-        do drawTriangle(340, 214, 400, 254, true); // tri 3
+        do drawRectangle(280-5, 340-5, 214, 254); // lvl3 3
+        do drawTriangle(220, 254, 280-5, 214, true); // tri 2
+        do drawTriangle(340-5, 214, 390, 254, true); // tri 3
+        do drawRectangle(460, 510, 204, 254); // lvl3 4
+        do drawTriangle(420, 254, 460, 204, true); // tri 4
 
 
         // do drawRectangle(0, 100, 100, 250);

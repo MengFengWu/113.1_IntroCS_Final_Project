@@ -14,6 +14,7 @@ class MainGame {
       // The initial square is located in (0,239), has size 15, and is not moving.
       // let square = Square.new(0, 239, 15); // new square
       let square = Square.new(0, 0, 15); // for designing level 3
+      let currentLevel = 2;
       let levelDrawer = LevelDrawer.new();
       let currentItem_X = Array.new(10);
       let currentItem_Y = Array.new(10);
@@ -27,7 +28,6 @@ class MainGame {
       let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
       do item.draw();
       let exit = false; 
-      let currentLevel = 1;
       return this;
    }
 
