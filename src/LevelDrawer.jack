@@ -85,8 +85,8 @@ class LevelDrawer {
         do drawRectangle(380, 430, 112, 127); // up1
         do drawRectangle(460, 510, 55, 75); // up2
         do drawRectangle(368, 370, 30, 85); // wall b/w 13
-        do drawRectangle(300, 360, 30, 55); // up3
-        do drawRectangle(200, 240, 30, 50); // up4
+        do drawRectangle(300, 360, 30, 50); // up3
+        do drawRectangle(180, 240, 30, 50); // up4
         do drawRectangle(120, 122, 30, 127); // wall b/w 45
         // end stairs
         do drawRectangle(0, 25, 20, 130); // stair 1
@@ -113,8 +113,8 @@ class LevelDrawer {
         do drawRectangle(380, 430, 112, 127); // up1
         do drawRectangle(460, 510, 55, 75); // up2
         do drawRectangle(368, 370, 30, 85); // wall b/w 13
-        do drawRectangle(300, 360, 30, 55); // up3
-        do drawRectangle(200, 240, 30, 50); // up4
+        do drawRectangle(300, 360, 30, 50); // up3
+        do drawRectangle(180, 240, 30, 50); // up4
         do drawRectangle(120, 122, 30, 127); // wall b/w 45
         // end stairs
         do drawRectangle(0, 25, 20, 130); // stair 1
@@ -125,7 +125,7 @@ class LevelDrawer {
 
     method void drawLevel2() {
         do Screen.setColor(true);
-        do drawRectangle(50, 90, 234, 254); // lvl2 1
+        do drawRectangle(35, 80, 239, 254); // lvl2 1
         //do drawRectangle(470, 510, 190, 200); // lvl2 2
         do drawRectangle(410, 450, 85, 95); // lvl2 4
         do drawRectangle(10, 50, 130, 140); // place item 2
@@ -138,7 +138,7 @@ class LevelDrawer {
     method void eraseLevel2() {
         /** Remember to erase after finish design*/
         do Screen.setColor(false);
-        do drawRectangle(50, 90, 234, 254); // lvl2 1
+        do drawRectangle(35, 80, 239, 254); // lvl2 1
         //do drawRectangle(470, 510, 190, 200); // lvl2 2
         do drawRectangle(410, 450, 85, 95); // lvl2 4
         do drawRectangle(10, 50, 130, 140); // place item 2
@@ -168,12 +168,12 @@ class LevelDrawer {
 
     method void drawLevel3() {
         do Screen.setColor(true);
-        do drawRectangle(17, 80, 244, 254); // lvl3 1
-        do drawRectangle(150, 200, 200, 250); // Lstep
-        do drawTriangle(200, 150, 300-10, 220, true); // tri 1
-        // do drawRectangle(199, 201, 150, 250); // triside 1
-        do drawRectangle(320-10, 370, 180, 250); // Rstep
-        do drawRectangle(200, 280, 120, 130); // Rstep 2
+        do drawRectangle(20, 90, 244, 254); // lvl3 1
+        do drawTriangle(90, 254, 160, 184, true); // tri 1
+        do drawRectangle(160, 210, 184, 194); // lvl3 2
+        do drawRectangle(280, 340, 214, 254); // lvl3 3
+        do drawTriangle(220, 254, 280, 214, true); // tri 2
+        do drawTriangle(340, 214, 400, 254, true); // tri 3
 
         // do drawRectangle(0, 100, 100, 250);
         // do drawTriangle(100, 100, 400, 250, true);
@@ -183,12 +183,13 @@ class LevelDrawer {
 
     method void eraseLevel3() {
         do Screen.setColor(false);
-        do drawRectangle(17, 80, 244, 254); // lvl3 1
-        do drawRectangle(150, 200, 200, 250); // Lstep
-        do drawTriangle(200, 150, 300-10, 220, true); // tri 1
-        // do drawRectangle(200, 201, 150, 250); // triside 1
-        do drawRectangle(320-10, 370, 180, 250); // Rstep
-        do drawRectangle(200, 280, 120, 130); // Rstep 2
+        do drawRectangle(20, 90, 244, 254); // lvl3 1
+        do drawTriangle(90, 254, 160, 184, true); // tri 1
+        do drawRectangle(160, 210, 184, 194); // lvl3 2
+        do drawRectangle(280, 340, 214, 254); // lvl3 3
+        do drawTriangle(220, 254, 280, 214, true); // tri 2
+        do drawTriangle(340, 214, 400, 254, true); // tri 3
+
 
         // do drawRectangle(0, 100, 100, 250);
         // do drawTriangle(100, 100, 400, 250, true);

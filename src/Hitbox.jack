@@ -102,8 +102,8 @@ class Hitbox {
         do detectSquare(380, 430, 112, 127, xStat, yStat, size); // up1
         do detectSquare(460, 510, 55, 75, xStat, yStat, size); // up2
         do detectSquare(368, 370, 30, 85, xStat, yStat, size); // wall b/w 13
-        do detectSquare(300, 360, 30, 55, xStat, yStat, size); // up3
-        do detectSquare(200, 240, 30, 55, xStat, yStat, size); // up4
+        do detectSquare(300, 360, 30, 50, xStat, yStat, size); // up3
+        do detectSquare(180, 240, 30, 50, xStat, yStat, size); // up4
         do detectSquare(120, 122, 30, 127, xStat, yStat, size); // wall b/w 45
         
         do detectSquare(0, 25, 20, 130, xStat, yStat, size); // stair 1
@@ -128,7 +128,7 @@ class Hitbox {
         let stableStat = s;
         do detectSquare(35, 80, 239, 254, xStat, yStat, size); // lvl2 1
         do detectSquare(0, 510, 40, 41, xStat, yStat, size); // construction floor
-        /**
+        
         do detectMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, xStat, yStat, size, true); // moving plate 1
         do detectMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, xStat, yStat, size, true); // moving plate 2
         do detectMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, xStat, yStat, size, true); // moving obstacle 1
@@ -138,7 +138,7 @@ class Hitbox {
         do detectMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, xStat, yStat, size, true); // expand stand 1
         do detectMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, xStat, yStat, size, true); // expand stand 2
         do detectMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, xStat, yStat, size, true); // expand stand 3
-        */
+        
         do detectSquare(10, 50, 130, 140, xStat, yStat, size); // place item 2
         do detectSquare(10, 50, 20, 30, xStat, yStat, size); // lvl2 5
 
@@ -156,14 +156,14 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectSquare(17, 80, 244, 254, xStat, yStat, size); // lvl3 1
-        do detectSquare(30, 510, 250, 254, xStat, yStat, size); // construction floor
+        do detectSquare(20, 90, 244, 254, xStat, yStat, size); // lvl3 1
+        do detectSquare(30, 510, 253, 254, xStat, yStat, size); // construction floor
         //method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
-        do detectSquare(150, 200, 200, 250, xStat, yStat, size); // Lstep
-        do detectTriangle(200, 150, 300-10, 220, xStat, yStat, size); // tri 1
-        do detectSquare(200, 201, 150, 250, xStat, yStat, size); // triside 1
-        do detectSquare(320-10, 370, 180, 250, xStat, yStat, size); // Rstep
-        do detectSquare(200, 280, 120, 130, xStat, yStat, size); // Rstep 2
+        do detectTriangle(90, 254, 160, 184, xStat, yStat, size); // tri 1
+        do detectSquare(160, 210, 184, 194, xStat, yStat, size); // lvl3 2
+        do detectSquare(280, 340, 214, 254, xStat, yStat, size); // lvl3 2
+        do detectTriangle(220, 254, 280, 214, xStat, yStat, size); // tri 2
+        do detectTriangle(340, 214, 400, 254, xStat, yStat, size); // tri 3
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
