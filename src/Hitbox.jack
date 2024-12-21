@@ -126,8 +126,8 @@ class Hitbox {
         let yStat = y;
         let vyStat = vy;
         let stableStat = s;
-        do detectSquare(45, 80, 239, 254, xStat, yStat, size); // lvl2 1
-        // do detectSquare(50, 510, 253, 254, xStat, yStat, size); // lvl2 floor (delete)
+        do detectSquare(35, 80, 239, 254, xStat, yStat, size); // lvl2 1
+        // do detectSquare(50, 510, 253, 254, xStat, yStat, size); // construction floor
         do detectMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, xStat, yStat, size, true); // moving plate 1
         do detectMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, xStat, yStat, size, true); // moving plate 2
         do detectMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, xStat, yStat, size, true); // moving obstacle 1
@@ -153,8 +153,10 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        // do detectSquare(0, 100, 100, 250, xStat, yStat, size);
-        // do detectTriangle(100, 100, 400, 250, xStat, yStat, size);
+        do detectSquare(17, 80, 244, 254, xStat, yStat, size); // lvl3 1
+        do detectSquare(30, 510, 253, 254, xStat, yStat, size); // construction floor
+        //method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
+        do detectTriangle(200, 100, 250, 150, xStat, yStat, size);
         // do detectTriangle(450, 250, 500, 200, xStat, yStat, size);
 
         do detectWall(xStat, yStat, size);
@@ -205,8 +207,8 @@ class Hitbox {
     // API for detectings
 
     method void detectWall(int x, int y, int size) {
-        if(x < 1) {
-            let xStat = 1;
+        if(x < 0) {
+            let xStat = 0;
         }
         if((x + size) > 510) {
             let xStat = 510 - size;
