@@ -158,8 +158,8 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectSquare(20, 160, 244, 254, xStat, yStat, size); // lvl3 1
-        do detectSquare(30, 510, 253, 254, xStat, yStat, size); // construction floor
+        do detectSquare(50, 160, 244, 254, xStat, yStat, size); // lvl3 1
+        // do detectSquare(30, 510, 23, 24, xStat, yStat, size); // construction floor
         //method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
         do detectTriangle(90, 244, 160, 194, xStat, yStat, size); // tri 1
         do detectSquare(160, 161, 194, 254, xStat, yStat, size); // triside 1
@@ -219,7 +219,7 @@ class Hitbox {
         
         do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
 
-        do detectSquare(0, 70, 50, 130, xStat, yStat, size); // TEST ONLY
+        do detectSquare(0, 70, 244, 254, xStat, yStat, size); // lvl4 1
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);

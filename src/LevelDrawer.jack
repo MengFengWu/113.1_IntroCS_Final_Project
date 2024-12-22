@@ -177,7 +177,7 @@ class LevelDrawer {
     }
 
     method void Level3design() {
-        do drawRectangle(20, 160-1, 244, 254); // lvl3 1
+        do drawRectangle(50, 160-1, 244, 254); // lvl3 1
         do drawTriangle(90, 244, 160, 194, true); // tri 1
         do drawRectangle(160, 210, 194, 204); // lvl3 2
         do drawRectangle(275, 325, 214, 254); // lvl3 3
@@ -256,7 +256,9 @@ class LevelDrawer {
         do drawRectangle(0, 510, 0, 254); // dark mode
 
         do drawRectangle(0, 450, 122, 132); // mid floor
-        do drawRectangle(0, 70, 50, 130); // TEST ONLY
+        do drawRectangle(0, 70, 244, 254); // lvl4 1
+
+
         return;
     }
 
