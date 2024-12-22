@@ -54,7 +54,7 @@ class MainGame {
          return;
       }
       if (key = 81)  { let exit = true; }     // q key
-      //if (key = 90)  { do square.decSize(); } // z key
+      // if (key = 85)  { let currentLevel = currentLevel - 1; let levelUp = 1; } // u key
       //if (key = 88)  { do square.incSize(); } // x key
       if (key = 32) { do square.jump(); }   // up arrow
       if (key = 131) { do square.jump(); }

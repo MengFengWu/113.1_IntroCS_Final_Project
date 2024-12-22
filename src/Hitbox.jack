@@ -302,6 +302,7 @@ class Hitbox {
         return;
     }
 
+
     method void detectMovingSquare(int rxLi, int rxRi, int ryUi, int ryDi, 
                                     int rxLf, int rxRf, int ryUf, int ryDf, int duration,
                                     int x, int y, int size, bool back) {

@@ -180,7 +180,7 @@ class LevelDrawer {
         do drawRectangle(20, 160, 244, 254); // lvl3 1
         do drawTriangle(90, 244, 160, 194, true); // tri 1
         do drawRectangle(160, 210, 194, 204); // lvl3 2
-        do drawRectangle(280-5, 325, 214, 254); // lvl3 3
+        do drawRectangle(275, 325, 214, 254); // lvl3 3
         do drawTriangle(220, 254, 280-5, 214, true); // tri 2
         do drawTriangle(325, 214, 380, 254, true); // tri 3
         do drawRectangle(450, 510, 214, 254); // lvl3 4
@@ -196,11 +196,6 @@ class LevelDrawer {
         // do drawRectangle(270, 330, 108, 118); // lvl3 item
         do drawRectangle(300-8, 308, 43, 95); // Xmas tree
 
-        do drawTriangle(300, 8, 315, 23, true); // Xmas tree R1
-        do drawTriangle(300, 16, 322, 38, true); // Xmas tree R2
-
-        do drawTriangle(285, 23, 300, 8, true); // Xmas tree L1
-        do drawTriangle(278, 38, 300, 16, true); // Xmas tree L2
 
         return;
     }
@@ -228,9 +223,13 @@ class LevelDrawer {
         do drawWatchOut(b);
         do Screen.setColor(b);
 
+        do drawTriangle(300, 8, 315, 23, true); // Xmas tree R1
+        do drawTriangle(300, 16, 322, 38, true); // Xmas tree R2
         do drawTriangle(300, 29, 329, 55, true); // Xmas tree R3
         do drawTriangle(300+5, 43, 337, 73, true); // Xmas tree R4
         
+        do drawTriangle(285, 23, 300, 8, true); // Xmas tree L1
+        do drawTriangle(278, 38, 300, 16, true); // Xmas tree L2
         do drawTriangle(271, 55, 300, 29, true); // Xmas tree L3
         do drawTriangle(263, 73, 300-5, 43, true); // Xmas tree L4
         // do drawTriangle(300, 8, 330, 70, true); // tri 5-1
