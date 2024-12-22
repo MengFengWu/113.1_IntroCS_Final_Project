@@ -126,7 +126,6 @@ class Hitbox {
         let yStat = y;
         let vyStat = vy;
         let stableStat = s;
-        // do detectSquare(50, 510, 0, 1, xStat, yStat, size); // lvl2 ceiling
 
         do detectSquare(35, 80, 239, 254, xStat, yStat, size); // lvl2 1
         // do detectSquare(0, 510, 40, 41, xStat, yStat, size); // construction floor
@@ -158,17 +157,42 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectSquare(20, 90, 244, 254, xStat, yStat, size); // lvl3 1
-        // do detectSquare(30, 510, 253, 254, xStat, yStat, size); // construction floor
+        do detectSquare(20, 160, 244, 254, xStat, yStat, size); // lvl3 1
+        do detectSquare(30, 510, 253, 254, xStat, yStat, size); // construction floor
         //method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
-        do detectTriangle(90, 254, 160, 184, xStat, yStat, size); // tri 1
-        do detectSquare(160, 161, 184, 254, xStat, yStat, size); // triside 1
-        do detectSquare(160, 210, 184, 194, xStat, yStat, size); // lvl3 2
-        do detectSquare(280-5, 340-5, 214, 254, xStat, yStat, size); // lvl3 3
+        do detectTriangle(90, 244, 160, 194, xStat, yStat, size); // tri 1
+        do detectSquare(160, 161, 194, 254, xStat, yStat, size); // triside 1
+        do detectSquare(160, 210, 194, 204, xStat, yStat, size); // lvl3 2
+        do detectSquare(280-5, 325, 214, 254, xStat, yStat, size); // lvl3 3
         do detectTriangle(220, 254, 280-5, 214, xStat, yStat, size); // tri 2
-        do detectTriangle(340-5, 214, 390, 254, xStat, yStat, size); // tri 3
-        do detectSquare(460, 510, 204, 254, xStat, yStat, size); // lvl3 4
-        do detectTriangle(420, 254, 460, 204, xStat, yStat, size); // tri 4
+        do detectTriangle(325, 214, 380, 254, xStat, yStat, size); // tri 3
+        do detectSquare(450, 510, 214, 254, xStat, yStat, size); // lvl3 4
+        do detectTriangle(415, 254, 450, 214, xStat, yStat, size); // tri 4
+
+        do detectSquare(450, 490, 155, 160, xStat, yStat, size); // lvl3 stair 1
+        do detectSquare(470, 510, 115, 120, xStat, yStat, size); // lvl3 stair 2
+        do detectSquare(450, 490, 75, 80, xStat, yStat, size); // lvl3 stair 3
+        do detectSquare(445, 450, 75, 160, xStat, yStat, size); // lvl3 stair wall
+
+    
+        do detectSquare(360, 400, 70, 80, xStat, yStat, size); // lvl3 up 1
+        do detectSquare(200, 240, 70, 80, xStat, yStat, size); // lvl3 up 2
+        // do detectTriangle(300, 8, 330, 70, xStat, yStat, size); // tri 5-1
+        // do detectTriangle(270, 70, 300, 8, xStat, yStat, size); // tri 5-2
+        // do detectSquare(270, 330, 108, 118, xStat, yStat, size); // lvl3 item
+
+        do detectTriangle(300, 8, 315, 23, xStat, yStat, size); // Xmas tree R1
+        do detectTriangle(300, 16, 322, 38, xStat, yStat, size); // Xmas tree R2
+        do detectTriangle(300, 29, 329, 55, xStat, yStat, size); // Xmas tree R3
+        do detectTriangle(300+5, 43, 337, 73, xStat, yStat, size); // Xmas tree R4
+        
+        do detectTriangle(285, 23, 300, 8, xStat, yStat, size); // Xmas tree L1
+        do detectTriangle(278, 38, 300, 16, xStat, yStat, size); // Xmas tree L2
+        do detectTriangle(271, 55, 300, 29, xStat, yStat, size); // Xmas tree L3
+        do detectTriangle(263, 73, 300-5, 43, xStat, yStat, size); // Xmas tree L4
+
+        do detectSquare(300-8, 308, 43, 95, xStat, yStat, size); // Xmas tree
+        
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
@@ -182,7 +206,7 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         
-        do detectSquare(0, 450, 252, 254, xStat, yStat, size); // mid floor
+        // do detectSquare(0, 450, 252, 254, xStat, yStat, size); // construction floor
         
         do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
         do detectSquare(0, 25, 122, 152, xStat, yStat, size); // AmongUs1
