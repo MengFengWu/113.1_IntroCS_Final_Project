@@ -231,7 +231,7 @@ class LevelDrawer {
     method void updateLevel3(bool b) {
         do drawWatchOut(b);
         do Screen.setColor(b);
-        // do drawRectangle(180, 235, 60, 70); // lvl3 up 2
+        do drawTriangle(180, 140, 240, 100, true); // tri 2
 
         do drawTriangle(300, 8, 315, 23, true); // Xmas tree R1
         do drawTriangle(300, 16, 322, 38, true); // Xmas tree R2
