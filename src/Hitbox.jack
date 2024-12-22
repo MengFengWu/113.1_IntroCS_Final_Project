@@ -126,7 +126,7 @@ class Hitbox {
         let yStat = y;
         let vyStat = vy;
         let stableStat = s;
-        do detectSquare(50, 510, 0, 1, xStat, yStat, size); // lvl2 ceiling
+        // do detectSquare(50, 510, 0, 1, xStat, yStat, size); // lvl2 ceiling
 
         do detectSquare(35, 80, 239, 254, xStat, yStat, size); // lvl2 1
         // do detectSquare(0, 510, 40, 41, xStat, yStat, size); // construction floor
@@ -320,11 +320,16 @@ class Hitbox {
             return;
         }
         if(y1 > y2) { // if y1 > y2 (/), check x + size, y + size
-            if(y > y1) {
+            // do detectSquare(x1, x2, y1 - 1, y1, x, y, size);
+            if(vyStat < 0) {
+                let vyStat = 0;
+                let yStat = y1 + 1;
+            }
+            if(yStat > y1) {
                 return;
             }
-            let xLoc = x + size;
-            let yLoc = y + size;
+            let xLoc = xStat + size;
+            let yLoc = yStat + size;
             let top = detectTriangleAux(x1, y1, x2, y2, yLoc);
             if(top < 0) {
                 return;
@@ -335,11 +340,16 @@ class Hitbox {
             }
         }
         else { // if y1 < y2 (\), check x, y + size
-            if(y > y2) {
+            // do detectSquare(x1, x2, y2 - 1, y2, x, y, size);
+            if(vyStat < 0) {
+                let vyStat = 0;
+                let yStat = y2 + 1;
+            }
+            if(yStat > y2) {
                 return;
             }
-            let xLoc = x;
-            let yLoc = y + size;
+            let xLoc = xStat;
+            let yLoc = yStat + size;
             let top = detectTriangleAux(x1, y1, x2, y2, yLoc);
             if(top < 0) {
                 return;

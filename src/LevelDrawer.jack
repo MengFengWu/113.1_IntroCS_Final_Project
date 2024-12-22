@@ -150,7 +150,7 @@ class LevelDrawer {
 
     method void drawLevel2() {
         do Screen.setColor(true);
-        do drawRectangle(50, 510, 0, 1); // ceiling
+        // do drawRectangle(50, 510, 0, 1); // ceiling
 
         do drawRectangle(35, 80, 239, 254); // lvl2 1
         //do drawRectangle(470, 510, 190, 200); // lvl2 2
@@ -165,7 +165,7 @@ class LevelDrawer {
     method void eraseLevel2() {
         /** Remember to erase after finish design*/
         do Screen.setColor(false);
-        do drawRectangle(50, 510, 0, 1); // ceiling
+        // do drawRectangle(50, 510, 0, 1); // ceiling
         do drawRectangle(35, 80, 239, 254); // lvl2 1
         //do drawRectangle(470, 510, 190, 200); // lvl2 2
         do drawRectangle(410, 450, 85, 95); // lvl2 4
