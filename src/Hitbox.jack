@@ -159,7 +159,7 @@ class Hitbox {
         let stableStat = s;
 
         do detectSquare(50, 160, 244, 254, xStat, yStat, size); // lvl3 1
-        // do detectSquare(30, 510, 23, 24, xStat, yStat, size); // construction floor
+        // do detectSquare(50, 510, 253, 254, xStat, yStat, size); // construction floor
         //method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
         do detectTriangle(90, 244, 160, 194, xStat, yStat, size); // tri 1
         do detectSquare(160, 161, 194, 254, xStat, yStat, size); // triside 1
@@ -189,10 +189,11 @@ class Hitbox {
         
         do detectSquare(360, 400, 70, 80, xStat, yStat, size); // lvl3 up 1
         // do detectSquare(180, 235, 60, 70, xStat, yStat, size); // lvl3 up 2
-        do detectSquare(140, 140, 70, 100, xStat, yStat, size); // triside 1
+        do detectSquare(140, 140, 60, 100, xStat, yStat, size); // triside 1
+        do detectSquare(140, 190, 100, 101, xStat, yStat, size); // triside 1
         do detectTriangle(140, 60, 190, 100, xStat, yStat, size); // tri 1
         // do detectSquare(160, 200, 130, 135, xStat, yStat, size); // lvl3 up 3
-        do detectSquare(220, 221, 130, 155, xStat, yStat, size); // triside 2
+        do detectSquare(240, 240, 100, 140, xStat, yStat, size); // triside 2
         do detectTriangle(180, 140, 240, 100, xStat, yStat, size); // tri 2
         do detectSquare(130, 180, 140, 150, xStat, yStat, size); // lvl3 up 4
         // do detectSquare(140, 200, 10, 20, xStat, yStat, size); // head
@@ -218,8 +219,9 @@ class Hitbox {
         // do detectSquare(0, 450, 252, 254, xStat, yStat, size); // construction floor
         
         do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
-
-        do detectSquare(0, 70, 244, 254, xStat, yStat, size); // lvl4 1
+        do detectSquare(0, 80, 244, 254, xStat, yStat, size); // lvl4 1
+        do detectSquare(180, 300, 244, 254, xStat, yStat, size); // lvl4 1
+        do detectMovingSquare(180, 240, 220, 240, 400, 460, 220, 240, 300, xStat, yStat, size, true);
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
@@ -355,7 +357,7 @@ class Hitbox {
             if(top < 0) {
                 if((vyStat < 0) & (yLoc > y1)) {
                     let vyStat = 0;
-                    let yStat = y1 + 1;
+                    let yStat = y1;
                 }
                 return;
             }
@@ -375,7 +377,7 @@ class Hitbox {
             if(top < 0) {
                 if((vyStat < 0) & (yLoc > y2)) {
                     let vyStat = 0;
-                    let yStat = y2 + 1;
+                    let yStat = y2;
                 }
                 return;
             }

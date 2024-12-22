@@ -177,6 +177,7 @@ class LevelDrawer {
     }
 
     method void Level3design() {
+
         do drawRectangle(50, 160-1, 244, 254); // lvl3 1
         do drawTriangle(90, 244, 160, 194, true); // tri 1
         do drawRectangle(160, 210, 194, 204); // lvl3 2
@@ -197,34 +198,15 @@ class LevelDrawer {
         // do drawRectangle(180, 235, 60, 70); // lvl3 up 2
         do drawTriangle(140, 60, 190, 100, true); // tri 1
         // do drawRectangle(160, 200, 130, 135); // lvl3 up 3
-        do drawTriangle(180, 140, 240, 100, true); // tri 2
+        // do drawTriangle(180, 140, 240, 100, true); // tri 2
         do drawRectangle(130, 180, 140, 150); // lvl3 up 4
         // do drawRectangle(140, 200, 10, 20); // head
         
         do drawRectangle(0, 50, 80, 90); // lvl3 up 5
         do drawTriangle(50, 80, 80, 130, true); // tri 5
         
-        do drawRectangle(100, 160, 20, 30); // lvl3 up 5
+        do drawRectangle(100, 160, 20, 30); // lvl3 up last
 
-        return;
-    }
-
-    method void drawLevel3() {
-        do Screen.setColor(true);
-        do Level3design();
-
-        do updateLevel3(true);
-        return;
-    }
-
-    method void eraseLevel3() {
-        do Screen.setColor(false);
-        do Level3design();
-
-        do updateLevel3(false);
-
-        do drawMerry(false);
-        do drawXmas(false);
         return;
     }
 
@@ -249,15 +231,54 @@ class LevelDrawer {
         return;
     }
 
-    
+    method void drawLevel3() {
+        do Screen.setColor(true);
+        do Level3design();
+
+        do updateLevel3(true);
+        return;
+    }
+
+    method void eraseLevel3() {
+        do Screen.setColor(false);
+        do Level3design();
+
+        do updateLevel3(false);
+
+        do drawMerry(false);
+        do drawXmas(false);
+        return;
+    }
+
+
+    method void Level4design() {
+        
+        do drawRectangle(0, 450, 122, 132); // mid floor
+        do drawRectangle(0, 80, 244, 254); // lvl4 1
+        do drawRectangle(180, 300, 244, 254); // lvl4 1
+
+        return;
+    }
+
+    method void updateLevel4(bool b) {
+        
+        do updateTime();
+        do drawWatchOut(b);
+        do Screen.setColor(b);
+        do drawTriangle(180, 140, 240, 100, true); // tri 2
+        do updateMovingSquare(180, 240, 220, 240, 400, 460, 220, 240, 300, true, b); // moving plate 1
+
+        do drawMerry(b);
+        do drawXmas(b);
+        return;
+    }
 
     method void drawLevel4() {
         do Screen.setColor(true);
-        do drawRectangle(0, 510, 0, 254); // dark mode
-
-        do drawRectangle(0, 450, 122, 132); // mid floor
-        do drawRectangle(0, 70, 244, 254); // lvl4 1
-
+        // do drawRectangle(0, 510, 0, 254); // dark mode
+        
+        do Level4design();
+        do updateLevel4(true);
 
         return;
     }
@@ -265,6 +286,10 @@ class LevelDrawer {
     method void eraseLevel4() {
         do Screen.setColor(false);
         do drawRectangle(0, 510, 0, 254);
+
+        do Level4design();
+        do updateLevel4(false);
+
         return;
     }
 
