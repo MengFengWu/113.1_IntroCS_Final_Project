@@ -321,10 +321,6 @@ class Hitbox {
         }
         if(y1 > y2) { // if y1 > y2 (/), check x + size, y + size
             // do detectSquare(x1, x2, y1 - 1, y1, x, y, size);
-            if(vyStat < 0) {
-                let vyStat = 0;
-                let yStat = y1 + 1;
-            }
             if(yStat > y1) {
                 return;
             }
@@ -332,6 +328,10 @@ class Hitbox {
             let yLoc = yStat + size;
             let top = detectTriangleAux(x1, y1, x2, y2, yLoc);
             if(top < 0) {
+                if((vyStat < 0) & (yLoc > y1)) {
+                    let vyStat = 0;
+                    let yStat = y1 + 1;
+                }
                 return;
             }
             if(xLoc > top) {
@@ -341,10 +341,6 @@ class Hitbox {
         }
         else { // if y1 < y2 (\), check x, y + size
             // do detectSquare(x1, x2, y2 - 1, y2, x, y, size);
-            if(vyStat < 0) {
-                let vyStat = 0;
-                let yStat = y2 + 1;
-            }
             if(yStat > y2) {
                 return;
             }
@@ -352,6 +348,10 @@ class Hitbox {
             let yLoc = yStat + size;
             let top = detectTriangleAux(x1, y1, x2, y2, yLoc);
             if(top < 0) {
+                if((vyStat < 0) & (yLoc > y2)) {
+                    let vyStat = 0;
+                    let yStat = y2 + 1;
+                }
                 return;
             }
             if(xLoc < top) {
