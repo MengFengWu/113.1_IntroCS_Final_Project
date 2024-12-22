@@ -360,32 +360,43 @@ class LevelDrawer {
     }
 
     method void drawTriangle(int x1, int y1, int x2, int y2, bool fill) {
-        var int start, end, step;
+        var int a, b, diff, dx, dy;
+        let a = 0;
+        let b = 0;
+        let diff = 0;
+        let dx = x2 - x1;
+        let dy = y2 - y1;
         if(fill = false) {
             do Screen.drawLine(x1, y1, x2, y2);
         }
         if(fill = true) {
-            if(y1 < y2) {
-                do drawTriangleAux(x1, y1, x2, y2, y2);
+            if(dy > 0) { // (\)
+                while(~((a = dx) & (b = dy))) {
+                    if(diff < 0) {
+                        do Screen.drawLine(x1 + a, y2, x1 + a, y1 + b);
+                        let a = a + 1;
+                        let diff = diff + dy;
+                    } 
+                    else {
+                        let b = b + 1;
+                        let diff = diff - dx;
+                    }  
+                }
             }
-            else {
-                do drawTriangleAux(x1, y1, x2, y2, y1);
+            else { // (/)
+                let dy = -1 * dy;
+                while(~((a = dx) & (b = dy))) {
+                    if(diff < 0) {
+                        do Screen.drawLine(x1 + a, y1 - b, x1 + a, y1);
+                        let a = a + 1;
+                        let diff = diff + dy;
+                    } 
+                    else {
+                        let b = b + 1;
+                        let diff = diff - dx;
+                    }  
+                }
             }
-        }
-        return;
-    }
-
-    method void drawTriangleAux(int x1, int y1, int x2, int y2, int bottom) {
-        var int midx, midy;
-        let midx = (x1 + x2) / 2;
-        let midy = (y1 + y2) / 2;
-        if(x1 > x2) {
-            return;
-        }
-        else {
-            do Screen.drawLine(midx, bottom, midx, midy);
-            do drawTriangleAux(x1, y1, midx - 1, midy, bottom);
-            do drawTriangleAux(midx + 1, midy, x2, y2, bottom);
         }
         return;
     }
