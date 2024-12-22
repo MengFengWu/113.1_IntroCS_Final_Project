@@ -235,7 +235,11 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectSquare(0, 70, 50, 130, xStat, yStat, size); // TEST ONLY
+        do detectSquare(0, 510, 246, 254, xStat, yStat, size); // lvl5 floor
+        do detectSquare(100, 200, 187, 197, xStat, yStat, size); // lvl5 floor
+        do detectSquare(180, 330, 128, 138, xStat, yStat, size); // lvl5 floor
+        do detectSquare(310, 410, 187, 197, xStat, yStat, size); // lvl5 floor
+        do detectSquare(230, 280, 69, 79, xStat, yStat, size); // lvl5 floor
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);

@@ -293,17 +293,29 @@ class LevelDrawer {
         return;
     }
 
-    method void eraseLevel5() {
-        do Screen.setColor(false);
-        do drawRectangle(0, 70, 50, 130);
+    method void Level5design() {
+        
+        do drawRectangle(0, 510, 246, 254); // lvl5 floor
+        do drawRectangle(100, 200, 187, 197); // lvl5 1
+        do drawRectangle(180, 330, 128, 138); // lvl5 2
+        do drawRectangle(310, 410, 187, 197); // lvl5 3
+        do drawRectangle(230, 280, 69, 79); // lvl5 4
+
         return;
     }
 
     method void drawLevel5() {
         do Screen.setColor(true);
-        do drawRectangle(0, 70, 50, 130);
+        do Level5design();
         return;
     }
+
+    method void eraseLevel5() {
+        do Screen.setColor(false);
+        do Level5design();
+        return;
+    }
+
 
     // API for moving tiles
 
