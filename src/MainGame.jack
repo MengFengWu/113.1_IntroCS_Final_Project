@@ -7,6 +7,7 @@ class MainGame {
    field array currentItem_level;
    field int currentItem_progress;
    field LevelDrawer levelDrawer;
+   field Treasure treasure;
    field Item item;
 
    /** Constructs a new square game. */
@@ -16,15 +17,23 @@ class MainGame {
       let square = Square.new(0, 0, 15); // for designing level 3
       let currentLevel = 1;
       let levelDrawer = LevelDrawer.new();
-      let currentItem_X = Array.new(10);
-      let currentItem_Y = Array.new(10);
-      let currentItem_level = Array.new(10);
+      let currentItem_X = Array.new(11);
+      let currentItem_Y = Array.new(11);
+      let currentItem_level = Array.new(11);
       let currentItem_X[0] = 224;
       let currentItem_Y[0] = 160;
       let currentItem_level[0] = 1;
       let currentItem_X[1] = 256;
       let currentItem_Y[1] = 40;
       let currentItem_level[1] = 1;
+      let currentItem_X[2] = 286;
+      let currentItem_Y[2] = 150;
+      let currentItem_level[2] = 2;
+      let currentItem_X[3] = 16;
+      let currentItem_Y[3] = 96;
+      let currentItem_level[3] = 2;
+      let currentItem_progress = 0;
+      let treasure = Treasure.new(448, 180);
       let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
       let exit = false; 
       return this;
@@ -40,6 +49,10 @@ class MainGame {
    /** Moves the square in the current direction. */
    method void moveSquare(int key) {
       var int levelUp;
+      
+      if(currentLevel = 6) {
+         return;
+      }
       if (key = 81)  { let exit = true; }     // q key
       //if (key = 90)  { do square.decSize(); } // z key
       //if (key = 88)  { do square.incSize(); } // x key
@@ -51,21 +64,32 @@ class MainGame {
       if (key = 80) { do square.printInfo(); }
 
       if(currentLevel = currentItem_level[currentItem_progress]) {
-         do item.draw();
+         do item.draw(currentLevel);
          if(item.detect(square) = true) {
-            do item.erase();
+            do item.erase(currentLevel);
             let currentItem_progress = currentItem_progress + 1;
             do item.update(currentItem_X[currentItem_progress], currentItem_Y[currentItem_progress]);
+         }
+      }
+      if(currentLevel = 5) {
+         do treasure.draw(true);
+         if(currentItem_progress = 11) {
+            if(treasure.detect(square) = true) {
+               let currentLevel = 6;
+               let exit = true;
+               return;
+            }
          }
       }
       do levelDrawer.updateLevelMain(currentLevel);
       do square.syncHitbox(levelDrawer.getTime());
       let levelUp = square.move(currentLevel);
       if(~(levelUp = 0)) {
+         do item.erase(currentLevel);
+         do treasure.draw(false);
          do levelDrawer.eraseLevelMain(currentLevel);
          let currentLevel = currentLevel + levelUp;
          do levelDrawer.drawLevelMain(currentLevel);
-         do item.erase();
       }
       do Sys.wait(5);  // delays the next movement
       return;
@@ -74,25 +98,38 @@ class MainGame {
    /** Runs the game: handles the user's inputs and moves the square accordingly */
    method void run() {
       var char key;  // the key currently pressed by the user
+      var int rep;
       let exit = false;
 
       do levelDrawer.drawLevelMain(currentLevel);
       
       while (~exit) {
-         // waits for a key to be pressed
-         while (key = 0) {
-            let key = Keyboard.keyPressed();
-            do square.setDirection(0);
-            do moveSquare(key);
-         }
+         if(currentLevel < 6) {
+            // waits for a key to be pressed
+            while (key = 0 & (~exit)) {
+               let key = Keyboard.keyPressed();
+               do square.setDirection(0);
+               do moveSquare(key);
+            }
 
-         // waits for the key to be released
-         while (~(key = 0)) {
-            let key = Keyboard.keyPressed();
-            do moveSquare(key);
+            // waits for the key to be released
+            while (~(key = 0) & (~exit)) {
+               let key = Keyboard.keyPressed();
+               do moveSquare(key);
+            }
          }
-     } // while
-     return;
+      } // while
+      let rep = 10;
+      while(rep > 0) {
+         do Output.println();
+         let rep = rep - 1;
+      }
+      do Output.printString("                        CONGRATULATIONS!");
+      do Output.println();
+      do Output.printString("                        TOTAL JUMPS: ");
+      do Output.printInt(square.getJumpCount());
+      do Output.println();
+      return;
    }
 }
 

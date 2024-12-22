@@ -1,5 +1,9 @@
 # 113.1_IntroCS_Final_Project
 
+## Storyline
+
+在一個奇幻的世界，温智方是一位被稱為「光之工匠」的天才發明家。他雖然只是個年輕學徒，但能將閃爍的星光鍛造成強大的魔法裝置。一日，邪惡的影族偷走了守護城鎮的光之核心，導致黑暗吞噬大地。智方挺身而出，利用自己的發明創造了一把能凝聚星光的長劍。他穿越危險的暗影森林，擊敗了影族首領，成功奪回光之核心，並將星光永遠刻印在天空，守護人們的未來。
+
 ## How to use the repo
 
 (You have to set up your SSH key first, see [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh))
@@ -77,7 +81,3 @@ git push
 ## Good Practices
 
 - Always test your code before pushing it!
-
-## Storyline
-
-在一個奇幻的世界，温智方是一位被稱為「光之工匠」的天才發明家。他雖然只是個年輕學徒，但能將閃爍的星光鍛造成強大的魔法裝置。一日，邪惡的影族偷走了守護城鎮的光之核心，導致黑暗吞噬大地。智方挺身而出，利用自己的發明創造了一把能凝聚星光的長劍。他穿越危險的暗影森林，擊敗了影族首領，成功奪回光之核心，並將星光永遠刻印在天空，守護人們的未來。

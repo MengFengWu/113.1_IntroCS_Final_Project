@@ -20,12 +20,14 @@ class Square {
    field int currentLoc;
    field int counter;
    field bool delayStart;
+   field int jumpCount;
 
    /** Constructs and draws a new square with a given location and size. */
    constructor Square new(int ax, int ay, int asize) {
       let x = ax;
       let y = ay;
       let timeDelay = 15;
+      let jumpCount = 0;
       let wasX = Array.new(200);
       let wasY = Array.new(200);
       let currentLoc = 0;
@@ -47,6 +49,7 @@ class Square {
    method int getX() { return x; }
    method int getY() { return y; }
    method int getSize() { return size; }
+   method int getJumpCount() { return jumpCount; }
 
    /** Disposes this square. */
    method void dispose() {
@@ -194,6 +197,7 @@ class Square {
       if(isStable = true) {
          // do Output.printString("JUMP!");
          // do Output.println();
+         let jumpCount = jumpCount + 1;
          let vy = -jumpVel;
          let isStable = false;
       }
