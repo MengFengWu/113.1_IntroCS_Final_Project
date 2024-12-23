@@ -243,10 +243,13 @@ class Hitbox {
         
         do detectSquare(475, 510, 160, 170, xStat, yStat, size); // step up
         
-        do detectSquare(70, 80, 82, 122, xStat, yStat, size); // house
-        do detectSquare(120, 130, 82, 122, xStat, yStat, size); 
-        do detectTriangle(70, 82, 90, 62, xStat, yStat, size);
-        do detectTriangle(110, 62, 130, 82, xStat, yStat, size); 
+        do detectSquare(82, 92, 82, 122, xStat, yStat, size); // house
+        do detectSquare(132, 142, 82, 122, xStat, yStat, size); 
+        do detectTriangle(82, 82, 102, 62, xStat, yStat, size);
+        do detectTriangle(122, 62, 142, 82, xStat, yStat, size); 
+        
+        do detectSquare(0, 40, 75, 82, xStat, yStat, size); 
+        do detectSquare(30, 70, 20, 27, xStat, yStat, size); 
         
 
         do detectWall(xStat, yStat, size);
@@ -261,7 +264,7 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
 
-        do detectSquare(0, 510, 246, 254, xStat, yStat, size); // lvl5 floor
+        do detectSquare(60, 510, 246, 254, xStat, yStat, size); // lvl5 floor
         do detectSquare(100, 200, 187, 197, xStat, yStat, size); // lvl5 floor
         do detectSquare(180, 330, 128, 138, xStat, yStat, size); // lvl5 floor
         do detectSquare(310, 410, 187, 197, xStat, yStat, size); // lvl5 floor

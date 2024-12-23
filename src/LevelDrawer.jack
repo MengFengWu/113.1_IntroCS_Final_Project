@@ -217,8 +217,12 @@ class LevelDrawer {
         
         do drawRectangle(475, 510, 160, 170); // step up
         
-        do drawRectangle(70, 80, 82, 122); // house
-        do drawRectangle(120, 130, 82, 122); 
+        do drawRectangle(82, 92, 82, 122); // house
+        do drawRectangle(132, 142, 82, 122); 
+
+        
+        do drawRectangle(0, 40, 75, 82); 
+        do drawRectangle(30, 70, 20, 27); 
 
         return;
     }
@@ -231,8 +235,8 @@ class LevelDrawer {
         // do drawTriangle(180, 60, 240, 100, true); // time control
         do updateMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, true, ~b); // moving plate 1
         do Screen.setColor(~b);
-        do drawTriangle(70, 82, 90, 62, true); 
-        do drawTriangle(110, 61, 130, 81, true); 
+        do drawTriangle(82, 82, 102, 62, true); 
+        do drawTriangle(122, 62, 142, 82, true); 
         
         // do updateMovingSquare(100, 100, 122, 132, 100, 150, 122, 132, 120, true, ~b); // floor open
         
@@ -252,7 +256,7 @@ class LevelDrawer {
 
     method void Level5design() {
         
-        do drawRectangle(0, 510, 246, 254); // lvl5 floor
+        do drawRectangle(60, 510, 246, 254); // lvl5 floor
         do drawRectangle(100, 200, 187, 197); // lvl5 1
         do drawRectangle(180, 330, 128, 138); // lvl5 2
         do drawRectangle(310, 410, 187, 197); // lvl5 3
