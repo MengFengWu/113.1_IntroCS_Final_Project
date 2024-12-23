@@ -215,23 +215,27 @@ class LevelDrawer {
         do drawRectangle(420, 435, 180, 225); // pillar 3
         do drawRectangle(420, 435, 130, 155); // pillar 3
         
-        do drawRectangle(470, 510, 189, 254); // step up
+        do drawRectangle(475, 510, 160, 170); // step up
+        
+        do drawRectangle(70, 80, 82, 122); // house
+        do drawRectangle(120, 130, 82, 122); 
 
         return;
     }
 
     method void updateLevel4(bool b) {
         // do drawWatchOut(b);
-        do Screen.setColor(b);
         // do drawTriangle(180, 60, 240, 100, true); // time control
         // do drawTriangle(180, 60, 240, 100, true); // time control
         // do drawTriangle(180, 60, 240, 100, true); // time control
         // do drawTriangle(180, 60, 240, 100, true); // time control
         do updateMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, true, ~b); // moving plate 1
+        do Screen.setColor(~b);
+        do drawTriangle(70, 82, 90, 62, true); 
+        do drawTriangle(110, 61, 130, 81, true); 
         
         // do updateMovingSquare(100, 100, 122, 132, 100, 150, 122, 132, 120, true, ~b); // floor open
         
-        do updateMovingSquare(300, 350, 40, 60, 300, 350, 40, 120, 80, true, ~b); // smash
 
         return;
     }

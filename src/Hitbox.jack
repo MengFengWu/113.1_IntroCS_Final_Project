@@ -223,8 +223,8 @@ class Hitbox {
         
         do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
         do detectSquare(0, 80, 244, 254, xStat, yStat, size); // lvl4 1
-        // do detectMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, xStat, yStat, size, true);
-        do detectSquare(100, 460, 225, 240, xStat, yStat, size); // moving square
+        do detectMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, xStat, yStat, size, true);
+        // do detectSquare(100, 460, 225, 240, xStat, yStat, size); // moving square
 
         do detectSquare(170+1, 190, 180, 225, xStat, yStat, size); // twin tower
         do detectSquare(230+1, 250, 180, 225, xStat, yStat, size); // twin tower
@@ -241,9 +241,13 @@ class Hitbox {
         do detectSquare(420, 435, 180, 225, xStat, yStat, size); // pillar 3
         do detectSquare(420, 435, 130, 155, xStat, yStat, size); // pillar 3
         
-        do detectSquare(470, 510, 189, 254, xStat, yStat, size); // pillar 3
+        do detectSquare(475, 510, 160, 170, xStat, yStat, size); // step up
         
-        do detectMovingSquare(300, 350, 40, 60, 300, 350, 40, 120, 80, xStat, yStat, size, true); // smash
+        do detectSquare(70, 80, 82, 122, xStat, yStat, size); // house
+        do detectSquare(120, 130, 82, 122, xStat, yStat, size); 
+        do detectTriangle(70, 82, 90, 62, xStat, yStat, size);
+        do detectTriangle(110, 62, 130, 82, xStat, yStat, size); 
+        
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
