@@ -198,12 +198,24 @@ class LevelDrawer {
         return;
     }
 
-    method void Level4design() {
-        
+    method void Level4design() {        
         do drawRectangle(0, 450, 122, 132); // mid floor
+
         do drawRectangle(0, 80, 244, 254); // lvl4 1
-        do drawTriangle(180, 225, 220, 180, true); // tri
-        do drawTriangle(250, 225, 290, 180, true); // tri
+        do drawRectangle(170+1, 190, 180, 225); // twin tower
+        do drawRectangle(230+1, 250, 180, 225); // twin tower
+        
+        do drawTriangle(172, 180, 190+1, 170, true); // tri
+        do drawTriangle(232, 180, 250+1, 170, true); // tri
+        
+        do drawRectangle(300, 315, 165, 225); // pillar 1
+        do drawRectangle(300, 315, 130, 140); // pillar 1
+        do drawRectangle(360, 375, 210, 225); // pillar 2
+        do drawRectangle(360, 375, 130, 185); // pillar 2
+        do drawRectangle(420, 435, 180, 225); // pillar 3
+        do drawRectangle(420, 435, 130, 155); // pillar 3
+        
+        do drawRectangle(470, 510, 189, 254); // step up
 
         return;
     }
@@ -213,9 +225,14 @@ class LevelDrawer {
         do Screen.setColor(b);
         // do drawTriangle(180, 60, 240, 100, true); // time control
         // do drawTriangle(180, 60, 240, 100, true); // time control
-        do drawTriangle(180, 60, 240, 100, true); // time control
-        do drawTriangle(180, 60, 240, 100, true); // time control
-        do updateMovingSquare(100, 260, 225, 240, 400, 460, 225, 240, 320, true, ~b); // moving plate 1
+        // do drawTriangle(180, 60, 240, 100, true); // time control
+        // do drawTriangle(180, 60, 240, 100, true); // time control
+        do updateMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, true, ~b); // moving plate 1
+        
+        // do updateMovingSquare(100, 100, 122, 132, 100, 150, 122, 132, 120, true, ~b); // floor open
+        
+        do updateMovingSquare(300, 350, 40, 60, 300, 350, 40, 120, 80, true, ~b); // smash
+
         return;
     }
 

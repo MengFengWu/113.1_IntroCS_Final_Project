@@ -219,15 +219,31 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         
-        // do detectSquare(0, 450, 252, 254, xStat, yStat, size); // construction floor
+        do detectSquare(0, 450, 252, 254, xStat, yStat, size); // construction floor
         
         do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
         do detectSquare(0, 80, 244, 254, xStat, yStat, size); // lvl4 1
-        do detectMovingSquare(100, 260, 225, 240, 400, 460, 225, 240, 320, xStat, yStat, size, true);
-        do detectSquare(220, 221, 180, 225, xStat, yStat, size); // triside
-        do detectTriangle(180, 225, 210, 187, xStat, yStat, size); // tri 1
-        do detectSquare(290, 291, 180, 225, xStat, yStat, size); // triside
-        do detectTriangle(250, 225, 280, 187, xStat, yStat, size); // tri 2
+        // do detectMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, xStat, yStat, size, true);
+        do detectSquare(100, 460, 225, 240, xStat, yStat, size); // moving square
+
+        do detectSquare(170+1, 190, 180, 225, xStat, yStat, size); // twin tower
+        do detectSquare(230+1, 250, 180, 225, xStat, yStat, size); // twin tower
+
+        do detectSquare(190, 190+1, 170, 225, xStat, yStat, size); // triside
+        do detectTriangle(170, 180, 190, 170, xStat, yStat, size); // tri 1
+        do detectSquare(250, 250+1, 170, 225, xStat, yStat, size); // triside
+        do detectTriangle(230, 180, 250, 170, xStat, yStat, size); // tri 2
+
+        do detectSquare(300, 315, 165, 225, xStat, yStat, size); // pillar 1
+        do detectSquare(300, 315, 130, 140, xStat, yStat, size); // pillar 1
+        do detectSquare(360, 375, 210, 225, xStat, yStat, size); // pillar 2
+        do detectSquare(360, 375, 130, 185, xStat, yStat, size); // pillar 2
+        do detectSquare(420, 435, 180, 225, xStat, yStat, size); // pillar 3
+        do detectSquare(420, 435, 130, 155, xStat, yStat, size); // pillar 3
+        
+        do detectSquare(470, 510, 189, 254, xStat, yStat, size); // pillar 3
+        
+        do detectMovingSquare(300, 350, 40, 60, 300, 350, 40, 120, 80, xStat, yStat, size, true); // smash
 
         do detectWall(xStat, yStat, size);
         do detectHeight(xStat, yStat, size);
