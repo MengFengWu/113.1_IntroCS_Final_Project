@@ -219,7 +219,7 @@ class Hitbox {
         let vyStat = vy;
         let stableStat = s;
         
-        do detectSquare(0, 450, 252, 254, xStat, yStat, size); // construction floor
+        // do detectSquare(0, 450, 252, 254, xStat, yStat, size); // construction floor
         
         do detectSquare(0, 450, 122, 132, xStat, yStat, size); // mid floor
         do detectSquare(0, 80, 244, 254, xStat, yStat, size); // lvl4 1

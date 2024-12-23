@@ -46,7 +46,7 @@ class MainGame {
       let currentItem_Y[7] = 85;
       let currentItem_level[7] = 4;
       let currentItem_progress = 0;
-      let treasure = Treasure.new(448, 180);
+      let treasure = Treasure.new(256-32, 10);
       // let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
       let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
       let difficulty = 10;
@@ -126,7 +126,7 @@ class MainGame {
             do printTitle(true);
          }
          if(key = 133) {
-            let difficulty = 0;
+            let difficulty = 4;
             do printTitle(false);
          }
       }
@@ -156,6 +156,7 @@ class MainGame {
             }
          }
       } // while
+      do Screen.clearScreen();
       let rep = 10;
       while(rep > 0) {
          do Output.println();
