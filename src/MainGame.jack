@@ -9,13 +9,14 @@ class MainGame {
    field LevelDrawer levelDrawer;
    field Treasure treasure;
    field Item item;
+   field int difficulty;
 
    /** Constructs a new square game. */
    constructor MainGame new() {
       // The initial square is located in (0,239), has size 15, and is not moving.
       // let square = Square.new(0, 239, 15); // new square
       let square = Square.new(0, 200, 15); // for designing level 4
-      let currentLevel = 4;
+      let currentLevel = 3;
       let levelDrawer = LevelDrawer.new();
       let currentItem_X = Array.new(11);
       let currentItem_Y = Array.new(11);
@@ -32,9 +33,17 @@ class MainGame {
       let currentItem_X[3] = 16;
       let currentItem_Y[3] = 96;
       let currentItem_level[3] = 2;
-      let currentItem_progress = 0;
+      let currentItem_X[4] = 320;
+      let currentItem_Y[4] = 120;
+      let currentItem_level[4] = 3;
+      let currentItem_X[5] = 20;
+      let currentItem_Y[5] = 20;
+      let currentItem_level[5] = 3;
+      let currentItem_progress = 4;
       let treasure = Treasure.new(448, 180);
-      let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
+      // let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
+      let item = Item.new(currentItem_X[4], currentItem_Y[4], 32);
+      let difficulty = 10;
       let exit = false; 
       return this;
    }
@@ -73,7 +82,7 @@ class MainGame {
       }
       if(currentLevel = 5) {
          do treasure.draw(true);
-         if(currentItem_progress = 11) {
+         if(currentItem_progress = 8) {
             if(treasure.detect(square) = true) {
                let currentLevel = 6;
                let exit = true;
@@ -91,7 +100,7 @@ class MainGame {
          let currentLevel = currentLevel + levelUp;
          do levelDrawer.drawLevelMain(currentLevel);
       }
-      do Sys.wait(5);  // delays the next movement
+      do Sys.wait(difficulty);  // delays the next movement
       return;
    }
 
@@ -101,6 +110,28 @@ class MainGame {
       var int rep;
       let exit = false;
 
+      let rep = 6;
+      do printTitle(true);
+
+      while (~(key = 32)) {
+         let key = Keyboard.keyPressed();
+         if(key = 131) {
+            let difficulty = 10;
+            do printTitle(true);
+         }
+         if(key = 133) {
+            let difficulty = 0;
+            do printTitle(false);
+         }
+      }
+
+      do Screen.clearScreen();
+      let rep = 3000;
+      while(rep > 0) {
+         do Output.backSpace();
+         let rep = rep - 1;
+      }
+      do Output.moveCursor(0, 0);
       do levelDrawer.drawLevelMain(currentLevel);
       
       while (~exit) {
@@ -129,6 +160,42 @@ class MainGame {
       do Output.printString("                        TOTAL JUMPS: ");
       do Output.printInt(square.getJumpCount());
       do Output.println();
+      return;
+   }
+
+   method void printTitle(bool di) {
+      var char rep; 
+
+      do Screen.clearScreen();
+      let rep = 3000;
+      while(rep > 0) {
+         do Output.backSpace();
+         let rep = rep - 1;
+      }
+      do Output.moveCursor(0, 0);
+      let rep = 8;
+      while(rep > 0) {
+         do Output.println();
+         let rep = rep - 1;
+      }
+      do Output.printString("                   Wen Square's Adventure");
+      do Output.println();
+      do Output.printString("       Use Up & Down to select mode, press Space to start");
+      do Output.println();
+      do Output.println();
+      do Output.println();
+      if(di = true) {
+         do Output.printString("                        > Baby Mode <");
+         do Output.println();
+         do Output.printString("                        Real Man Mode");
+         do Output.println();
+      }
+      else {
+         do Output.printString("                          Baby Mode");
+         do Output.println();
+         do Output.printString("                      > Real Man Mode <");
+         do Output.println();
+      }
       return;
    }
 }

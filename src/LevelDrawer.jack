@@ -40,32 +40,18 @@ class LevelDrawer {
             do drawLevel5();
         }
         if(level > 5) {
-            //do drawEND(level);
-            do eraseLevel5();
+            do Screen.clearScreen();
         }
         return;
     }
 
     method void eraseLevelMain(int level) {
-        if(level = 1) {
-            do eraseLevel1();
-        }
-        if(level = 2) {
-            do eraseLevel2();
-        }
-        if(level = 3) {
-            do eraseLevel3();
-        }
-        if(level = 4) {
-            do eraseLevel4();
-        }
-        if(level = 5) {
-            do eraseLevel5();
-        }
+        do Screen.clearScreen();
         return;
     }
 
     method void updateLevelMain(int level) {
+        do updateTime();
         if(level = 1) {
             do updateLevel1(true);
         }
@@ -123,15 +109,6 @@ class LevelDrawer {
         return;
     }
 
-    method void eraseLevel1() {
-        do Screen.setColor(false);
-        do Level1design();
-
-        do updateLevel1(false);
-        return;
-    }
-    
-
     method void drawLevel2() {
         do Screen.setColor(true);
 
@@ -144,29 +121,7 @@ class LevelDrawer {
         return;
     }
 
-    
-
-    method void eraseLevel2() {
-        /** Remember to erase after finish design*/
-        do Screen.setColor(false);
-        do drawRectangle(35, 80, 239, 254); // lvl2 1
-        do drawRectangle(410, 450, 85, 95); // lvl2 4
-        do drawRectangle(10, 50, 130, 140); // place item 2
-        do drawRectangle(10, 50, 20, 30); // lvl2 5
-        do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, false); // moving plate 1
-        do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, false); // moving plate 2
-        do updateMovingSquare(180, 185, 130, 180, 180, 185, 204, 254, 86, true, false); // moving obstacle 1
-        do updateMovingSquare(420, 460, 170, 180, 460, 500, 80, 180, 173, true, false); // lvl2 3
-        do updateMovingSquare(320, 360, 110, 130, 320, 360, 30, 130, 160, true, false); // expand stand 1
-        do updateMovingSquare(230, 270, 30, 130, 230, 270, 110, 130, 160, true, false); // expand stand 2
-        do updateMovingSquare(105, 125, 110, 130, 60, 170, 50, 130, 270, true, false); // expand stand 3
-        
-        do drawLv2Text(false);
-        return;
-    }
-
     method void updateLevel2() {
-        do updateTime();
         do drawLv2Text(true);
         do updateMovingSquare(100, 170, 200, 220, 220, 290, 200, 220, 300, true, true); // moving plate 1
         do updateMovingSquare(400, 470, 200, 220, 310, 380, 200, 220, 300, true, true); // moving plate 2
@@ -218,16 +173,17 @@ class LevelDrawer {
         do Screen.setColor(b);
         do drawTriangle(180, 140, 240, 100, true); // tri 2
 
-        do drawTriangle(300, 8, 315, 23, true); // Xmas tree R1
-        do drawTriangle(300, 16, 322, 38, true); // Xmas tree R2
-        do drawTriangle(300, 29, 329, 55, true); // Xmas tree R3
-        do drawTriangle(300+5, 43, 337, 73, true); // Xmas tree R4
-        
-        do drawTriangle(285, 23, 300, 8, true); // Xmas tree L1
-        do drawTriangle(278, 38, 300, 16, true); // Xmas tree L2
-        do drawTriangle(271, 55, 300, 29, true); // Xmas tree L3
-        do drawTriangle(263, 73, 300-5, 43, true); // Xmas tree L4
-        
+        if((time - ((time / 10) * 10)) = 0) {
+            do drawTriangle(300, 8, 315, 23, true); // Xmas tree R1
+            do drawTriangle(300, 16, 322, 38, true); // Xmas tree R2
+            do drawTriangle(300, 29, 329, 55, true); // Xmas tree R3
+            do drawTriangle(300+5, 43, 337, 73, true); // Xmas tree R4
+            
+            do drawTriangle(285, 23, 300, 8, true); // Xmas tree L1
+            do drawTriangle(278, 38, 300, 16, true); // Xmas tree L2
+            do drawTriangle(271, 55, 300, 29, true); // Xmas tree L3
+            do drawTriangle(263, 73, 300-5, 43, true); // Xmas tree L4
+        }
 
         do drawMerry(true);
         do drawXmas(true);
@@ -242,18 +198,6 @@ class LevelDrawer {
         return;
     }
 
-    method void eraseLevel3() {
-        do Screen.setColor(false);
-        do Level3design();
-
-        do updateLevel3(false);
-
-        do drawMerry(false);
-        do drawXmas(false);
-        return;
-    }
-
-
     method void Level4design() {
         
         do drawRectangle(0, 450, 122, 132); // mid floor
@@ -265,8 +209,6 @@ class LevelDrawer {
     }
 
     method void updateLevel4(bool b) {
-        
-        do updateTime();
         // do drawWatchOut(b);
         do Screen.setColor(b);
         // do drawTriangle(180, 60, 240, 100, true); // time control
@@ -287,18 +229,6 @@ class LevelDrawer {
         return;
     }
 
-    method void eraseLevel4() {
-        do Screen.setColor(false);
-        do drawRectangle(0, 510, 0, 254);
-
-        do updateLevel4(false);
-        do Screen.setColor(false);
-        do Level4design();
-        do updateMovingSquare(180, 240, 220, 240, 400, 460, 220, 240, 300, true, false);
-
-        return;
-    }
-
     method void Level5design() {
         
         do drawRectangle(0, 510, 246, 254); // lvl5 floor
@@ -315,13 +245,6 @@ class LevelDrawer {
         do Level5design();
         return;
     }
-
-    method void eraseLevel5() {
-        do Screen.setColor(false);
-        do Level5design();
-        return;
-    }
-
 
     // API for moving tiles
 

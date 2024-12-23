@@ -41,7 +41,6 @@ class Square {
       let jumpVel = 70;
       let isStable = false;
       let levelUp = 0;
-      do draw();
       let hitbox = Hitbox.new();
       return this;
    }
