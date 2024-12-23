@@ -250,6 +250,31 @@ class Hitbox {
         
         do detectSquare(0, 40, 75, 82, xStat, yStat, size); 
         do detectSquare(30, 70, 20, 27, xStat, yStat, size); 
+
+        // mountain
+        do detectSquare(194, 214, 80, 122, xStat, yStat, size); 
+        do detectSquare(244, 269, 40, 122, xStat, yStat, size); 
+        do detectSquare(334, 364, 72, 122, xStat, yStat, size); 
+        do detectSquare(387, 402, 97, 122, xStat, yStat, size); 
+        
+        do detectTriangle(269, 40, 309, 15, xStat, yStat, size); 
+        do detectTriangle(309, 15, 324, 35, xStat, yStat, size); 
+        do detectTriangle(324, 35, 334, 72, xStat, yStat, size); 
+        do detectTriangle(364, 72, 379, 82, xStat, yStat, size); 
+        do detectTriangle(379, 82, 387, 97, xStat, yStat, size); 
+        do detectTriangle(402, 97, 412, 122, xStat, yStat, size); 
+        do detectTriangle(214, 80, 244, 40, xStat, yStat, size); 
+        do detectTriangle(187, 105, 194, 80, xStat, yStat, size); 
+        do detectTriangle(162, 122, 187, 105, xStat, yStat, size); 
+        
+        do detectSquare(187, 194, 105, 122, xStat, yStat, size); 
+        do detectSquare(214, 244, 80, 122, xStat, yStat, size); 
+        do detectSquare(269, 309, 40, 122, xStat, yStat, size); 
+        do detectSquare(309, 324, 35, 122, xStat, yStat, size); 
+        do detectSquare(324, 334, 72, 122, xStat, yStat, size); 
+        do detectSquare(364, 379, 82, 122, xStat, yStat, size); 
+        do detectSquare(379, 387, 97, 122, xStat, yStat, size); 
+        
         
 
         do detectWall(xStat, yStat, size);

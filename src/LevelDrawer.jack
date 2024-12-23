@@ -223,6 +223,30 @@ class LevelDrawer {
         
         do drawRectangle(0, 40, 75, 82); 
         do drawRectangle(30, 70, 20, 27); 
+        
+        // mountain
+        do drawRectangle(194, 214, 80, 122); 
+        do drawRectangle(244, 269, 40, 122);
+        do drawRectangle(334, 364, 72, 122);
+        do drawRectangle(387, 402, 97, 122); 
+
+        do drawTriangle(269, 40, 309, 15, true); // tri
+        do drawTriangle(309, 15, 324, 35, true); // tri
+        do drawTriangle(324, 35, 334, 72, true); // tri
+        do drawTriangle(364, 72, 379, 82, true); // tri
+        do drawTriangle(379, 82, 387, 97, true); // tri
+        do drawTriangle(402, 97, 412, 122, true); // tri
+        do drawTriangle(214, 80, 244, 40, true); // tri
+        do drawTriangle(187, 105, 194, 80, true); // tri
+        do drawTriangle(162, 122, 187, 105, true); // tri
+        
+        do drawRectangle(187, 194, 105, 122); 
+        do drawRectangle(214, 244, 80, 122); 
+        do drawRectangle(269, 309, 40, 122); 
+        do drawRectangle(309, 324, 35, 122); 
+        do drawRectangle(324, 334, 72, 122);
+        do drawRectangle(364, 379, 82, 122);
+        do drawRectangle(379, 387, 97, 122);
 
         return;
     }
