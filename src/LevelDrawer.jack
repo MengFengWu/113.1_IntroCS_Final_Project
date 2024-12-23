@@ -75,6 +75,9 @@ class LevelDrawer {
         if(level = 3) {
             do updateLevel3(true);
         }
+        if(level = 4) {
+            do updateLevel4(true);
+        }
         return;
     }
 
@@ -196,7 +199,7 @@ class LevelDrawer {
 
         do drawRectangle(360, 400, 70, 80); // lvl3 up 1
         // do drawRectangle(180, 235, 60, 70); // lvl3 up 2
-        do drawTriangle(140, 60, 190, 100, true); // tri 1
+        do drawTriangle(140, 60, 200, 100-1, true); // tri 1
         // do drawRectangle(160, 200, 130, 135); // lvl3 up 3
         // do drawTriangle(180, 140, 240, 100, true); // tri 2
         do drawRectangle(130, 180, 140, 150); // lvl3 up 4
@@ -205,7 +208,7 @@ class LevelDrawer {
         do drawRectangle(0, 50, 80, 90); // lvl3 up 5
         do drawTriangle(50, 80, 80, 130, true); // tri 5
         
-        do drawRectangle(100, 160, 20, 30); // lvl3 up last
+        do drawRectangle(100, 160, 30, 40); // lvl3 up last
 
         return;
     }
@@ -255,7 +258,8 @@ class LevelDrawer {
         
         do drawRectangle(0, 450, 122, 132); // mid floor
         do drawRectangle(0, 80, 244, 254); // lvl4 1
-        do drawRectangle(180, 300, 244, 254); // lvl4 1
+        do drawTriangle(180, 225, 220, 180, true); // tri
+        do drawTriangle(250, 225, 290, 180, true); // tri
 
         return;
     }
@@ -263,20 +267,20 @@ class LevelDrawer {
     method void updateLevel4(bool b) {
         
         do updateTime();
-        do drawWatchOut(b);
+        // do drawWatchOut(b);
         do Screen.setColor(b);
-        do drawTriangle(180, 140, 240, 100, true); // tri 2
-        do updateMovingSquare(180, 240, 220, 240, 400, 460, 220, 240, 300, true, b); // moving plate 1
-
-        do drawMerry(b);
-        do drawXmas(b);
+        // do drawTriangle(180, 60, 240, 100, true); // time control
+        // do drawTriangle(180, 60, 240, 100, true); // time control
+        do drawTriangle(180, 60, 240, 100, true); // time control
+        do drawTriangle(180, 60, 240, 100, true); // time control
+        do updateMovingSquare(100, 260, 225, 240, 400, 460, 225, 240, 320, true, ~b); // moving plate 1
         return;
     }
 
     method void drawLevel4() {
         do Screen.setColor(true);
-        // do drawRectangle(0, 510, 0, 254); // dark mode
-        
+        do drawRectangle(0, 510, 0, 254); // dark mode
+        do Screen.setColor(false);
         do Level4design();
         do updateLevel4(true);
 
@@ -287,8 +291,10 @@ class LevelDrawer {
         do Screen.setColor(false);
         do drawRectangle(0, 510, 0, 254);
 
-        do Level4design();
         do updateLevel4(false);
+        do Screen.setColor(false);
+        do Level4design();
+        do updateMovingSquare(180, 240, 220, 240, 400, 460, 220, 240, 300, true, false);
 
         return;
     }
@@ -388,9 +394,13 @@ class LevelDrawer {
                 let yDn = ((ryDi * (50 - progress)) + (ryDf * progress)) / 50;
             }
         }
-        do Screen.setColor(false);
+        if(set = true) {
+            do Screen.setColor(false);
+        }
+        else {
+            do Screen.setColor(true);
+        }
         do Screen.drawRectangle(xLp, yUp, xRp, yDp);
-        
         if(set = true) {
             do Screen.setColor(true);
         }
