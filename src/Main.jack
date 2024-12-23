@@ -1,4 +1,3 @@
-/** Initializes a new Square game and starts running it. */
 class Main {
     function void main() {
         var MainGame game;

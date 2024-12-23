@@ -1,5 +1,5 @@
 class MainGame {
-   field Square square; // the square of this game
+   field Square square;
    field boolean exit;
    field int currentLevel;
    field array currentItem_X;
@@ -11,7 +11,6 @@ class MainGame {
    field Item item;
    field int difficulty;
 
-   /** Constructs a new square game. */
    constructor MainGame new() {
       // The initial square is located in (0,239), has size 15, and is not moving.
       let square = Square.new(0, 239, 15); // new square
@@ -27,7 +26,7 @@ class MainGame {
       let currentItem_X[1] = 256;
       let currentItem_Y[1] = 40;
       let currentItem_level[1] = 1;
-      let currentItem_X[2] = 286;
+      let currentItem_X[2] = 288;
       let currentItem_Y[2] = 150;
       let currentItem_level[2] = 2;
       let currentItem_X[3] = 16;
@@ -54,14 +53,12 @@ class MainGame {
       return this;
    }
 
-   /** Disposes this game. */
    method void dispose() {
       do square.dispose();
       do Memory.deAlloc(this);
       return;
    }
 
-   /** Moves the square in the current direction. */
    method void moveSquare(int key) {
       var int levelUp;
       
@@ -110,7 +107,6 @@ class MainGame {
       return;
    }
 
-   /** Runs the game: handles the user's inputs and moves the square accordingly */
    method void run() {
       var char key;  // the key currently pressed by the user
       var int rep;
