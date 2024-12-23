@@ -242,7 +242,7 @@ class LevelDrawer {
 
     method void drawLevel4() {
         do Screen.setColor(true);
-        do drawRectangle(0, 510, 0, 254); // dark mode
+        do drawRectangle(0, 511, 0, 254); // dark mode
         do Screen.setColor(false);
         do Level4design();
         do updateLevel4(true);

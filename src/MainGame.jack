@@ -39,10 +39,16 @@ class MainGame {
       let currentItem_X[5] = 20;
       let currentItem_Y[5] = 20;
       let currentItem_level[5] = 3;
-      let currentItem_progress = 4;
+      let currentItem_X[6] = 480;
+      let currentItem_Y[6] = 180;
+      let currentItem_level[6] = 4;
+      let currentItem_X[7] = 96;
+      let currentItem_Y[7] = 85;
+      let currentItem_level[7] = 4;
+      let currentItem_progress = 0;
       let treasure = Treasure.new(448, 180);
       // let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
-      let item = Item.new(currentItem_X[4], currentItem_Y[4], 32);
+      let item = Item.new(currentItem_X[0], currentItem_Y[0], 32);
       let difficulty = 10;
       let exit = false; 
       return this;

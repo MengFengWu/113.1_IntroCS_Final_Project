@@ -30,7 +30,7 @@ class Item {
         if(disY < 0) {
             let disY = -1 * disY;
         }
-        if((disX + disY) < 15) {
+        if((disX + disY) < 16) {
             return true;
         }
         else {

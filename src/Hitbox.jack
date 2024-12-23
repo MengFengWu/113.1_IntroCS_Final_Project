@@ -226,8 +226,8 @@ class Hitbox {
         do detectMovingSquare(100, 260, 225, 240, 400, 480, 225, 240, 320, xStat, yStat, size, true);
         // do detectSquare(100, 460, 225, 240, xStat, yStat, size); // moving square
 
-        do detectSquare(170+1, 190, 180, 225, xStat, yStat, size); // twin tower
-        do detectSquare(230+1, 250, 180, 225, xStat, yStat, size); // twin tower
+        do detectSquare(170, 190, 180, 225, xStat, yStat, size); // twin tower
+        do detectSquare(230, 250, 180, 225, xStat, yStat, size); // twin tower
 
         do detectSquare(190, 190+1, 170, 225, xStat, yStat, size); // triside
         do detectTriangle(170, 180, 190, 170, xStat, yStat, size); // tri 1
@@ -373,7 +373,7 @@ class Hitbox {
 
     method void detectTriangle(int x1, int y1, int x2, int y2, int x, int y, int size) {
         var int xLoc, yLoc, top;
-        if(~((x1 < (x + size)) & (x < x2))) {
+        if(~(((x1 - 1) < (x + size)) & (x < (x2 + 1)))) {
             return;
         }
         if(y1 > y2) { // if y1 > y2 (/), check x + size, y + size
@@ -393,7 +393,7 @@ class Hitbox {
             }
             if(xLoc > top) {
                 let stableStat = false;
-                let xStat = top - size;
+                let xStat = top - size - 4;
             }
         }
         else { // if y1 < y2 (\), check x, y + size
@@ -413,7 +413,7 @@ class Hitbox {
             }
             if(xLoc < top) {
                 let stableStat = false;
-                let xStat = top;
+                let xStat = top + 4;
             }
         }
         return;
